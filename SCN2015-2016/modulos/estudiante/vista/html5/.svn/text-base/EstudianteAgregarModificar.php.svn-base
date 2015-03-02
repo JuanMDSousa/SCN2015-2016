@@ -1,0 +1,311 @@
+<?php
+/*
+ * * * * * * * * * * LICENCIA * * * * * * * * * * * * * * * * * * * * *
+
+Copyright(C) 2012
+Instituto Universtiario de Tecnología Dr. Federico Rivero Palacio
+
+Este programa es Software Libre y usted puede redistribuirlo y/o modificarlo
+bajo los términos de la versión 3.0 de la Licencia Pública General (GPLv3)
+publicada por la Free Software Foundation (FSF), es distribuido sin ninguna
+garantía. Usted debe haber recibido una copia de la GPLv3 junto con este
+programa, sino, puede encontrarlo en la página web de la FSF, 
+específicamente en la dirección http://www.gnu.org/licenses/gpl-3.0.html
+
+ * * * * * * * * * * ARCHIVO * * * * * * * * * * * * * * * * * * * * *
+
+Nombre: EstudianteAgregarModificar.php
+Diseñador: Johan Alamo (johan.alamo@gmail.com)
+Programador: Johan Alamo
+Fecha: Agosto de 2012
+Descripción:  
+	Es la vista utilizada para cuando se está intentando modificar o 
+	agregar un estudiante desde un computador, debe ser llamada desde un
+	objeto VistaComputador, para que de esta forma se pueda acceder a 
+	la información agregada a esta vista en el objeto EstudianteControlador.
+	
+	La información que se espera tener es la siguiente:
+	  accion: acción tratada puede ser preagregar, agregar, premodificar
+	          o modificar
+	  estudiantes: arreglo cuya única posición (la 0) contiene el instituto 
+	            según la acción tratada, si es agregar o preagregar será
+	            un objeto tipo Instituto con campos vacíos, si accion es
+	            premodificar o modificar permanecerá en pantalla el instituto
+	            tratado
+	  mensaje: es el mensaje a mostrar cuando accion es agregar o modificar
+
+ * * * * * * * * Cambios/Mejoras/Correcciones/Revisiones * * * * * * * *
+Diseñador - Programador /   Fecha   / Descripción del cambio
+---                         ----      ---------
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+
+//se extrae la información de la vista para un manejo simplificado
+//se extrae el arreglo con los estudiantes
+//$estudiantes = $this->obtenerDato('estudiantes');
+//se extrae el único objeto del arreglo
+//$estudiante = $estudiantes[0];
+
+//extrae el estudiante
+$estudiante = $this->obtenerDato('estudiante');
+
+
+$mensaje;
+$exito;
+	
+//se extrae la acción
+$accion = $this->obtenerDato('accion');
+
+
+//se extrae el mensaje si accion es agregar o modificar
+if (($accion == 'agregar') or ($accion == 'modificar')){
+	$mensaje = $this->obtenerDato('mensaje');
+	$exito = $this->obtenerDato('exito');
+}
+?>
+
+
+<div class="contenido">
+	<div class="cont">
+        <form id="formulario" method="post" enctype="multipart/form-data">			
+            <input type="hidden" name="modulo" />
+            <input type="hidden" name="accion" />
+            <input type="hidden" name="subaccion" />
+            <input type="hidden" name="submodulo" />
+            <input type="hidden" name="tipoVista" />
+            <?php
+            	if (($accion == 'premodificar')) {
+            ?>
+            <input type="hidden" name="codigo" value="<?php echo $estudiante->obtenerCodigo(); ?>" />
+            <input type="hidden" name="codigoP" value="<?php echo $estudiante->obtenerCodigo(); ?>" />
+            <?php
+            	}
+            ?>
+            <?php
+          
+				if (($accion == 'preagregar') or ($accion == 'agregar'))
+					echo "<h1>Agregar estudiante</h1>";
+				elseif (($accion == 'premodificar') or ($accion == 'modificar'))
+					echo "<h1>Modificar estudiante</h1>";
+				else
+					echo "<h1>acci&oacute;n inv&aacute;lida en Estudiantes</h1>";
+            ?>
+            <p class="menucentro">
+				<?php
+					if (($accion == 'preagregar') or ($accion == 'agregar'))
+						echo "<a href=\"javascript:enviarForm('formulario','estudiante','agregar','html5','EstudianteAgregarModificar');\">Guardar</a>";
+						
+						elseif (($accion == 'premodificar') or ($accion == 'modificar'))
+						echo "<a href=\"javascript:enviarForm('formulario','estudiante','modificar','html5','EstudianteAgregarModificar');\">Guardar</a>";
+				?>
+            &nbsp; &nbsp; | &nbsp; &nbsp;			
+            <a href='javascript:enviar("estudiante","listar","html5","EstudianteListar","")'>Ver Todos </a>
+            </p>   
+            <center><p style="font-size: 70%; color: grey;">Todos los campos con (*) son obligatorios</p></center>                 
+            <table id="formulario" style="font-size: 90%;">
+				<tr>					
+					<td>
+						<a class="imagen-zoom">
+								<?php if (FotografiaServicio::obtenerFotografiaPorCodigo($estudiante->obtenerCodigo())){?> 
+									<img src='tmp/<?php echo $estudiante->obtenerCodigo(); ?>.jpg' width="230px" height="1220px" border="0" />
+									<span>
+										<?php echo $estudiante->obtenerNombreCompleto(2); ?>
+										<img src='tmp/<?php echo $estudiante->obtenerCodigo(); ?>.jpg' />
+									</span>
+								<?php }else{?>
+									<img src='base/imagenes/Defecto.jpg' width="130px" height="220px" border="0" />
+									<span>
+										<?php echo $estudiante->obtenerNombreCompleto(2); ?>
+										<img src='base/imagenes/Defecto.jpg' />
+									</span>
+								<?php }?>
+						</a>			
+					</td>
+					<td>
+						<input type="file" name="imagen" id="imagen" accept="image/*">
+						<?php
+						
+						
+						
+						
+						//$estudiante->obtenerCedula(), $estudiante->obtenerCodigo(), "/tmp/".$_FILES['imagen']['name']
+						
+						//FotografiaServicio::modificarFotografia($nuevafoto);
+						
+						?>
+					</td>		
+					
+					
+				</tr>
+				<tr>
+					<td><span style="color: red">*</span> Estado:</td>
+						<td>
+							<select name="estado">
+							<?if($accion=='premodificar' and $estudiante->obtenerEstado()=='C'){?>
+								<option value="<?php echo $estudiante->obtenerEstado(); ?>">CURSANDO</option>
+								<option value="R">RETIRADO</option>
+								<option value="J">GRADUADO</option>
+							<?}elseif($accion=='premodificar' and $estudiante->obtenerEstado()=='R'){?>
+								<option value="<?php echo $estudiante->obtenerEstado(); ?>">RETIRADO</option>
+								<option value="A">CURSANDO</option>
+								<option value="J">GRADUADO</option>
+							<?}elseif($accion=='premodificar' and $estudiante->obtenerEstado()=='G'){?>
+								<option value="<?php echo $estudiante->obtenerEstado(); ?>">GRADUADO</option>
+								<option value="A">CURSANDO</option>
+								<option value="R">RETIRADO</option>
+							<?}elseif($accion=='preagregar'){?>								
+								<option value="C">CURSANDO</option>	
+								<option value="R">RETIRADO</option>
+								<option value="G">GRADUADO</option>
+							<?}?>
+							</select>					                       
+						</td>
+					<!--<td><span style="color: red">*</span> Nombre de usuario:</td>
+					<td>
+						<input name="login" id="login" type="text" class="obligatorio" value="<?php //echo $estudiante->obtenerLogin(); ?>"></input>
+						
+						<label id="logi"></label>
+					</td>-->
+				</tr>
+				<tr>
+					<td><span style="color: red">*</span> Nombre:</td>
+					<td>
+						<input name="nombre1" id="nombre1" type="text" class="obligatorio"  maxlength="100" OnKeyup="validarNombre1();" value="<?php echo $estudiante->obtenerNombre1(); ?>"></input>
+						<label id="nomb1"></label>
+					</td>				
+					<td>Segundo Nombre:</td>
+					<td>
+						<input name="nombre2" id="nombre2" type="text" OnKeyup="validarNombre2();" maxlength="100" value="<?php echo $estudiante->obtenerNombre2(); ?>"></input>
+						<label id="nomb2"></label>
+					</td>
+				</tr>
+				<tr>
+					<td><span style="color: red">*</span> Apellido:</td>
+					<td>
+						<input name="apellido1" id="apellido1" type="text" class="obligatorio" OnKeyup="validarApellido1();" maxlength="100" value="<?php echo $estudiante->obtenerApellido1(); ?>"></input>
+						<label id="ape1"></label>
+					</td>				
+					<td>Segundo Apellido:</td>
+					<td>
+						<input name="apellido2" id="apellido2" type="text" OnKeyup="validarApellido2();" maxlength="100" value="<?php echo $estudiante->obtenerApellido2(); ?>"></input>
+						<label id="ape2"></label>
+					</td>
+				</tr>
+				<tr>
+					<td><span style="color: red">*</span> Sexo:</td>
+					<td>
+						<select name="sexo" id="sexo">
+						<?php if($accion=='premodificar' and $estudiante->obtenerSexo()=='M'){?> 
+                            <option value="<?php echo $estudiante->obtenerSexo(); ?>">Masculino</option>
+                            <option value="F">Femenino</option>							
+                        <?php }elseif($accion=='premodificar' and $estudiante->obtenerSexo()=='F'){?>
+							<option value="<?php echo $estudiante->obtenerSexo(); ?>">Femenino</option>
+							<option value="M">Masculino</option>	
+						 <?php }elseif($accion=='preagregar'){?>						
+							<option value="M">Masculino</option>
+							<option value="F">Femenino</option>		
+                        <?php }?>
+                        </select>												
+					</td>
+					<td><span style="color: red">*</span> Fecha de Nacimiento:</td>
+					<td>
+						<input class="calendario obligatorio" name="fecNacimiento" id="fecNacimiento" type="text" maxlength="10" OnChange="validarFecha(this);" placeholder="dd-mm-aa" value="<?php echo $estudiante->obtenerFecNacimiento(); ?>"></input>
+						<!-- <span style="color: red">*</span> -->
+						<label id="calendario"></label>
+					</td>
+				</tr>
+				<tr>				
+					<td><span style="color: red">*</span> C&eacute;dula</td>
+					<td>
+						<input name="cedula" id="cedula" type="text" class="obligatorio" maxlength="8" OnKeyup="validarCedula();" value="<?php echo $estudiante->obtenerCedula(); ?>"></input>
+						<label id="cedu"></label>
+					</td>
+					<td>Tipo de sangre</td>
+					<td>
+                    	<select name="tipSangre" id="tipSangre">
+							<?php if($accion=='premodificar'){?> 			
+							<option value="<?php echo $estudiante->obtenerTipSangre(); ?>"><?php echo $estudiante->obtenerTipSangre(); ?></option>
+							<option value="A-">A-</option>
+							<option value="B+">B+</option>
+							<option value="B-">B-</option>
+							<option value="AB+">AB+</option>
+							<option value="AB-">AB-</option>
+							<option value="O+">O+</option>
+							<option value="O-">O-</option>		
+
+						 <?php }elseif($accion=='preagregar'){?>
+							<option value="">-----</option>
+							<option value="A-">A-</option>
+							<option value="B+">B+</option>
+							<option value="B-">B-</option>
+							<option value="AB+">AB+</option>
+							<option value="AB-">AB-</option>
+							<option value="O+">O+</option>
+							<option value="O-">O-</option>		
+                        <?php }?>					
+						</select>                       
+                	</td>			
+				</tr>
+				<tr>
+					<td><span style="color: red">*</span> Tel&eacute;fono m&oacute;vil:</td>
+					<td>
+						<input name="telefono1" id="telefono1" class="obligatorio" OnKeyup="validarTelefono1();" placeholder="XXX-XXXXXXX"  type="text" value="<?php echo $estudiante->obtenerTelefono1(); ?>"></input>
+						<label id="tlf1"></label>
+					</td>
+					<td>Tel&eacute;fono local:</td>
+					<td>
+						<input name="telefono2" id="telefono2" type="text" OnKeyup="validarTelefono2();" value="<?php echo $estudiante->obtenerTelefono2(); ?>"></input>
+						<label id="tlf2"></label>
+					</td>
+				</tr>
+				<tr>
+					<td><span style="color: red">*</span> Direcci&oacute;n:</td>
+					<td>
+						<input name="direccion" id="direccion" type="text" class="obligatorio" OnKeyup="validarDireccion();" value="<?php echo $estudiante->obtenerDireccion(); ?>"></input>
+						<label id="direc"></label>
+					</td>				
+					<td>Correo Personal:</td>
+					<td>
+						<input name="correoPersonal" id="correoPersonal" OnKeyup="validarCorreoP();" type="text" value="<?php echo $estudiante->obtenerCorreoPersonal(); ?>"></input>
+						<label id="correoP"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>C&oacute;digo de Rusnies:</td>
+					<td>
+						<input name="codRusnies" id="codRusnies" type="text" value="<?php echo $estudiante->obtenerCodRusnies(); ?>"></input>
+						<label id="codR"></label>
+					</td>
+					<td>N&uacute;mero de Expediente:</td>
+					<td>
+						<input name="numExpediente" id="numExpediente" type="text" value="<?php echo $estudiante->obtenerNumExpediente(); ?>"></input>
+						<label id="numEx"></label>
+					</td>					
+				</tr>			
+				<tr>
+					<td>N&uacute;mero de carnet:</td>
+					<td>
+						<input name="noCarnet" id="noCarnet" type="text" value="<?php echo $estudiante->obtenerNumCarnet();?>"></input>
+						<label id="noCar"></label>
+					</td>
+<!--
+					<td><span style="color: red">*</span> Instituto:</td>
+					<td>
+						<select name="codInstituto" class="obligatorio">
+-->
+         
+            <p class="mensaje"> 
+				<?php 
+					if (($accion == 'agregar') or ($accion == 'modificar'))
+						if($exito===true){						
+							echo "<spam style='color: blue;'>".$mensaje."</spam>";				
+						}else{
+							echo "<spam style='color: red;'>".$mensaje."</spam>";
+						}
+				?>
+            </p>
+        </form>
+    </div>
+</div>

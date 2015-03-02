@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/882/trunk/test/Twig/Tests/Fixtures/tests
+END
+in.test
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/700/trunk/test/Twig/Tests/Fixtures/tests/in.test
+END
+odd.test
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/!svn/ver/361/trunk/test/Twig/Tests/Fixtures/tests/odd.test
+END
+iterable.test
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/882/trunk/test/Twig/Tests/Fixtures/tests/iterable.test
+END
+constant.test
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/390/trunk/test/Twig/Tests/Fixtures/tests/constant.test
+END
+even.test
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/393/trunk/test/Twig/Tests/Fixtures/tests/even.test
+END
+array.test
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/599/trunk/test/Twig/Tests/Fixtures/tests/array.test
+END
+defined.test
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/702/trunk/test/Twig/Tests/Fixtures/tests/defined.test
+END
+empty.test
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/798/trunk/test/Twig/Tests/Fixtures/tests/empty.test
+END

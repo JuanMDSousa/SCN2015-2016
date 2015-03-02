@@ -1,0 +1,75 @@
+<?php
+/*
+ * * * * * * * * * * LICENCIA * * * * * * * * * * * * * * * * * * * * *
+
+Copyright(C) 2012
+Instituto Universtiario de Tecnología Dr. Federico Rivero Palacio
+
+Este programa es Software Libre y usted puede redistribuirlo y/o modificarlo
+bajo los términos de la versión 3.0 de la Licencia Pública General (GPLv3)
+publicada por la Free Software Foundation (FSF), es distribuido sin ninguna
+garantía. Usted debe haber recibido una copia de la GPLv3 junto con este
+programa, sino, puede encontrarlo en la página web de la FSF, 
+específicamente en la dirección http://www.gnu.org/licenses/gpl-3.0.html
+
+ * * * * * * * * * * ARCHIVO * * * * * * * * * * * * * * * * * * * * *
+
+Nombre: InstitutoMensaje.php
+Diseñador: Johan Alamo (johan.alamo@gmail.com)
+Programador: Johan Alamo
+Fecha: Agosto de 2012
+Descripción:  
+	Es la vista utilizada para mostrar mensajes genéricos, ejemplo: cuando
+	se produzca un error al eliminar o no se encuentre resultados, etc
+	
+	La información que se espera tener es la siguiente:
+	  titulo: Título a mostrar
+	  mensaje: Texto con el error o mensaje a mostrar
+	  *  
+ * * * * * * * * Cambios/Mejoras/Correcciones/Revisiones * * * * * * * *
+Diseñador - Programador /   Fecha   / Descripción del cambio
+---                         ----      ---------
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+//se extrae la información de la vista para un manejo simplificado
+	$mensaje = $this->obtenerDato('mensaje');
+	$titulo = $this->obtenerDato('titulo');
+	$exito = $this->obtenerDato('exito');
+	var_dump($_FILES['imagen']);
+?>
+
+<div class="contenido">
+	<div class="cont">
+	<form name="frmestudiante" method="post">
+		<input type="hidden" name="modulo" />
+		<input type="hidden" name="accion" />
+		<input type="hidden" name="tipoVista" />
+		
+		<h1><?php echo $titulo; ?></h1>
+		<p class="menucentro">
+			<a href='javascript:enviar("estudiante","listar","html5","EstudianteListar","")'>Ver Todos</a> 
+			&nbsp; &nbsp; | &nbsp;&nbsp;
+			<a href='javascript:enviar("estudiante","preagregar","html5","EstudianteAgregarModificar","")'>Agregar nuevo</a> 
+			&nbsp; &nbsp; | &nbsp;&nbsp;
+			<a href='javascript:enviar("estudiante","premodificar","html5","EstudianteAgregarModificar",Array("codigo","<?php echo $estudiante->obtenerCodigo();?>"))'>Modificar</a>
+			
+		</p>
+		<br />
+		<p class="mensaje"> 
+				<?php 
+					if($exito===true){
+						echo "<spam style='color: blue'>"."ESTUDIANTE ELIMINADO CON EXITO"."</spam>";
+					}else{
+						echo "<spam style='color: red'>"."ESTUDIANTE NO ELIMINADO"."</spam>";
+					}
+				
+				?> 
+			</p>
+	</form>
+    </div>
+</div>
+
+
+

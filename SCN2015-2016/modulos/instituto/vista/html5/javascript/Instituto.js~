@@ -1,0 +1,176 @@
+
+
+function  abrirDialogoInstituto(nombreDialogo,titulo,tipoAccion,montarImpu=true){
+	$('.modal').remove();
+	$('#'+nombreDialogo).remove();
+	crearDialogo(nombreDialogo,titulo,'',1,tipoAccion);
+	if (montarImpu==true)
+		montarImput();
+}
+
+function agregarInstituto(){
+	if (validarCampos()){
+		var a=Array("m_modulo","instituto","m_accion","agregar",
+					"m_vista","Agregar","nombre",$("#nombreI").val(),"nombreC",$("#nombreCI").val(),
+					"direccion",$("#direccionI").val() );
+		ajaxMVC(a,succAgregar,error);	
+	}
+}
+
+function succAgregar(data){
+	if(data.estatus>0){
+		mostrarMensaje(data.mensaje,1);
+		actualizar();
+		$("#dialogoInstituto").modal('hide');
+	}
+	else 
+		mostrarMensaje(data.mensaje,2);
+}
+
+function error(data){
+		console.log(data);
+		mostrarMensaje("error error: " + data.responseText,2);
+}
+
+function validarCampos(){
+	if ($("#nombreI").val()=="")
+		mostrarMensaje("Introduzca un nombre de instituto",2);
+	else if ($("#nombreCI").val()=="")
+		mostrarMensaje("Introduzca un nombre corto del instituto",2);
+	else 
+		return true;
+}
+
+function montarImput(){
+	$(".modal-body").load("modulos/instituto/vista/html5/FormularioInstituto.html");
+
+}
+
+function modificarInstituto(codigo){
+	abrirDialogoInstituto("dialogoInstituto","modificar Instituto","modificar()",true);
+	
+	var a=Array("m_modulo","instituto","m_accion","obtener",
+					"m_vista","Obtener","codigo",codigo);
+	ajaxMVC(a,succObtener,error);
+	
+}
+function eliminarInstituto(codigo){
+	abrirDialogoInstituto("dialogoInstituto","Eliminar Instituto","eliminar()",false);
+	
+	var a=Array("m_modulo","instituto","m_accion","obtener",
+					"m_vista","Obtener","codigo",codigo);
+	ajaxMVC(a,succObtenerE,error);
+	
+}
+
+function modificar(){
+	if (validarCampos()){
+		var a=Array("m_modulo","instituto","m_accion","modificar",
+					"m_vista","Modificar","nombre",$("#nombreI").val(),"nombreC",$("#nombreCI").val(),
+					"direccion",$("#direccionI").val(),"codigo",$("#codigoI").val() );
+		ajaxMVC(a,succModificar,error);	
+	}
+	
+}
+
+function succModificar(data){
+	if(data.estatus>0){
+		mostrarMensaje(data.mensaje,1);
+		actualizar();
+		$("#dialogoInstituto").modal('hide');
+	}
+	else 
+		mostrarMensaje(data.mensaje,2);
+}
+function succObtener(data){
+	if(data.estatus>0){
+		$("#nombreI").val(data.instituto[0]['nombre']);
+		$("#nombreCI").val(data.instituto[0]['nom_corto']);
+		$("#direccionI").val(data.instituto[0]['direccion']);
+		$("#codigoI").val(data.instituto[0]['codigo']);
+	}
+	else 
+		mostrarMensaje(data.mensaje,2);
+}
+
+function eliminar(){
+	var a=Array("m_modulo","instituto","m_accion","eliminar",
+					"m_vista","Eliminar","codigo",$("#codigoI").val());
+		ajaxMVC(a,succEliminar,error);	
+	
+}
+function actualizar(){
+	var a=Array("m_modulo","instituto","m_accion","listar",
+					"m_vista","Listar");
+		ajaxMVC(a,succListar,error);	
+}
+
+function succListar(data){
+	
+	if(data.estatus>0){
+		$('#tTabla').remove();
+		cadena="<table class='table' id='tTabla'>";
+		cadena+="<tr class='titulo'>";
+		cadena+=" <td>Nombre Instituto</td>";
+		cadena+=" <td>Nombre Corto</td>";
+		cadena+="<td>Direccion</td>";
+		cadena+="<td></td>";
+		cadena+="<td></td>";
+		cadena+="</tr>";
+		for (i=0;i<data.institutos.length;i++){
+			cadena+="<tr>";
+			cadena+=" <td>"+data.institutos[i]['nombre']+"</td>";
+			cadena+=" <td>"+data.institutos[i]['nom_corto']+"</td>";
+			if (data.institutos[i]['direccion']=="")
+				cadena+="<td>No asignada</td>";
+			else
+				cadena+="<td>"+data.institutos[i]['direccion']+"</td>";
+			cadena+="<td>";
+			cadena+="<button type='button' class='btn btn-primary' onClick='modificarInstituto("+data.institutos[i]['codigo']+")' data-toggle='modal' data-target='#dialogoInstituto' title='Modificar Instituto'>";
+			cadena+="<i class='icon-pencil'></i>"
+			cadena+="</button>";
+			cadena+="</td>";
+			cadena+="<td>"
+			cadena+="<button type='button' class='btn btn-danger' onClick='eliminarInstituto("+data.institutos[i]['codigo']+")' data-toggle='modal' data-target='#dialogoInstituto' title='Eliminar Instituto'>"
+			cadena+="<i class='icon-trash'></i>"
+			cadena+="</button>";
+			cadena+="</td>";
+			cadena+="</tr>";
+		
+		}
+		cadena+="</table>";
+		$(cadena).appendTo("#listarI");
+	}
+	else 
+		mostrarMensaje(data.mensaje,2);
+}
+function succEliminar(data){
+	if(data.estatus>0){
+		mostrarMensaje(data.mensaje,1);
+		actualizar();
+		$("#dialogoInstituto").modal('hide');
+	}
+	else 
+		mostrarMensaje(data.mensaje,2);
+}
+function succObtenerE(data){
+	if(data.estatus>0){
+		$("<h3> Esta seguro que quiere eliminar el instituto:</h3>").appendTo(".modal-body");
+		cadena="<input type='hidden' value='"+data.instituto[0]['codigo']+"' class='form-control' placeholder='codigo Instituto' id='codigoI'>";
+		$(cadena).appendTo(".modal-body");
+		
+		$("<br>").appendTo(".modal-body");
+		cadena= "<h4>Nombre: "+data.instituto[0]['nombre']+"</h4>";
+		$(cadena).appendTo(".modal-body");
+		cadena= "<h4>Nombre Corto : "+data.instituto[0]['nom_corto']+"</h4>";
+		$(cadena).appendTo(".modal-body");
+		cadena= "<h4>Dirección : "+data.instituto[0]['direccion']+"</h4>";
+		$(cadena).appendTo(".modal-body");
+	}
+	else 
+		mostrarMensaje(data.mensaje,2);
+}
+
+
+
+

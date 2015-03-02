@@ -1,0 +1,52 @@
+10
+
+dir
+897
+http://svn.twig-project.org/trunk/test/Twig/Tests/Fixtures
+http://svn.twig-project.org
+
+
+
+2012-04-27T07:30:05.988287Z
+896
+fabien
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+93ef8e89-cb99-4229-a87c-7fa0fa45744b
+
+filters
+dir
+
+functions
+dir
+
+tags
+dir
+
+regression
+dir
+
+exceptions
+dir
+
+expressions
+dir
+
+tests
+dir
+
+macros
+dir
+

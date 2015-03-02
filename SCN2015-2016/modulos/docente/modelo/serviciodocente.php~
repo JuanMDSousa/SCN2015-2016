@@ -1,0 +1,40 @@
+<?php
+
+class ServicioDocente{	
+
+	private static function obtenerMayorCodigo (){
+			//intentar la siguiente funcion
+			try {
+				$conexion = Conexion::conectar();
+				//realizacion de consulta de query en postgre
+				$consulta = "select coalesce (max(codigo),0) from sis.t_docente";
+				$ejecutar = $conexion->query($consulta);
+				$consulta=$ejecutar->fetchAll();
+			    //si la consulta es correcta dará como return el codigo mayor
+			    //que se encuentra en la base de datos.
+			    return $consulta [0][0];  					
+			}catch(Exception $e){
+				throw $e;
+			}						
+		}
+
+		public static function listar()
+		{
+			try{
+				$conexion = Conexion::conectar();
+				$consulta = "select * from sis.v_docente";
+				$ejecutar = $conexion->query($consulta);
+				$lista=$ejecutar->fetchAll();				
+				//si en la ejecucion los registros fueron 0 significa que existe un error, de lo contrario
+				//muestra el listar.
+				if($ejecutar->rowCount()!=0)
+					return $lista;
+				else
+					//throw new Exception("No existen personas en la base de datos");
+					return NULL;
+			}catch(Exception $e){
+				throw $e;
+			}
+		}
+}
+

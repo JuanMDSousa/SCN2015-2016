@@ -1,0 +1,97 @@
+{% extends 'Docente.html.twig' %}
+
+{% block contenido2 %}
+<br>
+<br>
+
+<h2>Estudiantes</h2>
+<br>
+<br>
+<div class="row-fluid">
+
+	<div class="col-xs-3" id="menu-opc">
+			<h2>OPCIONES DE DOCNTE</h2>
+
+			
+			<a href="index.php?m_modulo=persona&m_accion=listar&m_formato=html5&m_vista=Listar">
+				<button class="btn" title="Persona">
+					<i class="icon-remove"></i>
+				</button>			
+			
+				</a>	
+		
+			
+			
+	</div>
+	
+
+		<br><br>
+<div class="col-md-9">
+	
+	<table class="table">
+	<tr class="titulo">
+
+		<td>
+			Cedula		
+		</td>
+		<td>
+			Codigo
+		</td>
+		<td>
+			Nombre
+		</td>		
+		<td>
+			Estado
+		</td>
+		<td>
+			Direccion
+		</td>
+		<td>
+		<button class="btn btn-info" title="Agregar Estudiante" onclick="administrarEstudiante()" data-target="#preagregarest" data-toggle="modal">
+					<i class="icon-plus"></i>
+				</button>	
+					</td>
+
+		</td>
+		
+		
+		
+
+		</td>
+	
+	</tr>
+	{% for docentes in docente %}
+		<tr class="tr">
+			<td>
+				{{docentes.cedula}}
+			</td>
+			<td>
+				{{docentes.codigo}}
+			</td>			
+			<td>
+				{{docentes.nombre1}} {{docentes.apellido1}}
+			</td>		
+			<td>
+				{{docentes.cod_estado}}
+			</td>
+
+			<td>
+				{{docentes.direccion}}				
+			</td>
+			<td>
+				<a href="index.php?m_modulo=estudiante&m_accion=eliminar&m_formato=html5&m_vista=Listar&codigo={{estudiantes.codigo}}">
+				<button class="btn btn-info" title="Eliminar Estudiante" onclick="return eliminar();">
+					<i class="icon-remove"></i>
+				</button>
+				</a>
+			</td>
+			
+			
+			
+		</tr>
+	{% endfor %}
+	</table>
+	</div>
+		
+</div>	
+{% endblock %}

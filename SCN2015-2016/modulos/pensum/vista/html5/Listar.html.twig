@@ -1,0 +1,92 @@
+{% extends 'Pensum.html.twig' %}
+{% block headVista %}
+	<style>
+		td
+		{
+			text-align:center;
+		}		
+	</style>
+
+{% endblock %}
+{% block contenido %}
+<br><br>
+
+<div class="container">
+<div class="row-fluid">
+	<div class="col-md-12">
+	<center><h2>Pensum</h2>
+		
+	</center>
+	<br>
+	
+	<div id="tabla1">
+    <div id="tabla2">
+	<table class="table" id="tablapensum">
+		<tr class="titulo">
+			<td>
+				Numero
+			</td>	
+			<td>
+				Nombre Pensum	
+			</td>
+			<td>
+				Nombre Corto	
+			</td>	
+			<td colspan="2">
+				
+			{% if (permisos.obtenerPermiso('pensum','insert'))  %}
+				<button class="btn btn-success" title="Agregar Pensum" onclick="administrarPensum()" data-target="#preagregarpensum" data-toggle="modal">
+					Agregar Pensum
+				</button>		
+			{% endif %}	
+			
+			</td>	
+				
+		</tr>
+	{% set cont = 0 %}
+	{% for pensums in pensum %}
+		<tr class="tr">
+			{% set cont = cont + 1 %}
+			<td>{{cont}}</td>
+			<td>{{pensums.nombre}}</td>
+			<td>{{pensums.nom_corto}}</td>
+			<td colspan="2">	
+	
+			{% if (permisos.obtenerPermiso('pensum','update'))  %}
+			<button class="btn btn-warning" title="Ver Pensum" onclick="verPensum({{pensums.codigo}})">
+					<i class="icon-eye-open"></i>
+				</button>
+			{% endif %}			
+			
+			<button class="btn btn-info" title="Informacion del Pensum" onclick="agregarInfPen({{pensums.codigo}})">
+					<i class="icon-pencil"></i>
+				</button>
+				
+			{% if (permisos.obtenerPermiso('pensum','delete'))  %}
+			<button class="btn btn-danger" title="Eliminar Pensum" onclick="eliminar({{pensums.codigo}});">
+					<i class="icon-remove"></i>
+				</button>
+			{% endif %}	
+
+	<button class='btn btn-danger' title='Reporte en PDF' onclick='window.location.assign("index.php?m_modulo=pensum&m_accion=buscarTrayPen&m_vista=verUnicTray&m_formato=pdf&codigo={{pensums.codigo}}")'><i class='icon-book'></i></button>
+
+		<button class='btn btn-primary' title='Reporte en PDF' onclick='window.location.assign("index.php?m_modulo=pensum&m_accion=buscarTrayPen&m_vista=verUnicTray2&m_formato=pdf&codigo={{pensums.codigo}}")'><i class='icon-book'></i></button>
+
+
+			</td>						
+
+		</tr>
+	{% endfor %}
+	</table>
+        </div>
+        </div>
+	
+	
+     </div>
+	</div>	
+</div>	
+<br>
+	<br><br>
+	<br>
+   	
+{% endblock %}

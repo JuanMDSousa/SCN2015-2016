@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/897/trunk/lib/Twig/Extension
+END
+Sandbox.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/558/trunk/lib/Twig/Extension/Sandbox.php
+END
+Escaper.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/894/trunk/lib/Twig/Extension/Escaper.php
+END
+Optimizer.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/424/trunk/lib/Twig/Extension/Optimizer.php
+END
+Debug.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/!svn/ver/758/trunk/lib/Twig/Extension/Debug.php
+END
+Core.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/897/trunk/lib/Twig/Extension/Core.php
+END

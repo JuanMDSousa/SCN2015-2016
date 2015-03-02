@@ -1,0 +1,574 @@
+alert("entro al js");
+
+function buscarInformacion(codigo){
+	
+	$.ajax({                 //llamada ajax
+			type:"post",
+			dataType: "json",
+			url: "index.php",
+			data:{  m_modulo:"curso",             //parámetros
+					m_accion:"mostrar", 
+					m_vista:"Mostrar", 
+					m_formato:"json", 
+					codigo: codigo,
+					},
+			success: function(datos){ 
+							montarInformacionPensum(datos.nombreCorto,datos.nombre,datos.observaciones);
+					},
+			error: function(data){ 
+						alert("Error de comunicación con el servidor");
+					}
+		});	
+	
+}
+function buscarInformacionUnidadesCurricularesT(codTrayecto){
+	$.ajax({                 //llamada ajax
+			type:"post",
+			dataType: "json",
+			url: "index.php",
+			data:{  m_modulo:"pensum",             //parámetros
+					m_accion:"listarUnidadesPorTrayecto", 
+					m_vista:"ListarUnidades", 
+					m_formato:"json", 
+					codTrayecto: codTrayecto,
+					},
+			success: function(datos){ 
+				unidades=datos.unidades;
+
+						montarUnidades(unidades);
+					},
+			error: function(data){ 
+						alert("Error de comunicación con el servidor");
+					}
+		});	
+	
+}
+
+
+
+
+
+
+
+function dialogoAgregarSeccion(nombreDialogo,titulo){
+
+$('#'+nombreDialogo).remove();
+crearDialogo(nombreDialogo,titulo);
+montarInformacionDialogoAgregarSeccion();
+//alert($('#codPeriodo').val());
+buscarInformacionTrayectos($('#codPeriodo').val());
+
+}
+
+function montarInformacionDialogoAgregarSeccion(){
+$(".modal-body").load("modulos/curso/vista/html5/FormularioAgregarSeccion.html"
+				);
+   
+
+
+
+}
+function montarTrayectos(trayectos){
+cadena="";
+
+for(i=0;i<trayectos.length;i++){
+cadena+="<option value="+trayectos[i]['codigo']+" >Trayecto "+trayectos[i]['num_trayecto']    +"</option>";
+
+
+}
+$(cadena).appendTo("#trayectos")
+
+
+
+}
+function crearDialogo(nombreDialogo,titulo){
+
+$('<div class="modal fade" id="'+ nombreDialogo+'"tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+  '<div class="modal-lg">'+
+    '<div class="modal-content">'+
+     '<div class="modal-header">'+
+     '<div class="alerts">'+
+  	'</div>'+ 
+      ' <button type="button" class="close" data-dismiss="modal">'+
+      '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+
+       '<h4 class="modal-title" id="myModalLabel">'+ titulo+'</h4>'+
+      '</div>'+
+      '<div class="modal-body">'+
+
+      '</div>'+
+      '<div class="modal-footer">'+
+      '<button type="button" class="btn btn-success" onclick="administrarSeccion()">Guardar</button>'+
+      	  '<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>'+
+      		  
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>').appendTo("body");
+      }
+
+function cargarUnidades(){
+$('#tablaUnidades').remove();
+buscarInformacionUnidadesCurricularesT($('#trayectos').val());
+
+}
+
+function montarUnidades(unidades){
+cadena="";
+
+if (unidades==null){
+mostrarMensaje('El trayecto elegido no posee unidades curriculares',2)
+
+}else{
+cadena+="<table class='table table-hover' id='tablaUnidades'>";
+cadena+="<thead>";
+cadena+="<tr class='active ' >";
+cadena+="<td colspan='10'> Unidad curricular</td> " ;
+cadena+="<td colspan='10'> Capacidad máxima</td> " ;
+cadena+="<td colspan='10'>Fecha inicio</td> " ;
+cadena+="<td colspan='10'>Fecha final</td> " ;
+cadena+="<td colspan='10'>Docente</td> " ;
+cadena+="<td colspan='10'>Observaciones</td> " ;
+cadena+="</tr>";
+cadena+="</thead>";
+cadena+="<tbody>";
+
+for (i=0;i<unidades.length;i++){
+	cadena+="<tr class='active'>";
+	cadena+="<div class='input-group'>";
+	cadena+= "<td colspan='10'> <div class='input-group'>  <input type='checkbox'  id=check"+i+"  onchange='verChek(check"+i+")' > </input>  "+unidades[i]['nombre'] +   "</div> </td>";
+	cadena+= "<td colspan='10'> <div class='input-group'>   <input type='text' class='form-control' placeholder='Cantidad máxima' id=capacidad"+i+">  </div> </td>";
+	cadena+= "<td colspan='10'> <div class='input-group'>   <input type='text' class='form-control' placeholder='Fecha de inicio' id=fecInicio"+i+">  </div> </td>";
+    cadena+= "<td colspan='10'> <div class='input-group'>   <input type='text' class='form-control' placeholder='Fecha final' id=fecFinal"+i+">  </div> </td>";
+	cadena+= "<td colspan='10'> <div class='input-group'>   <input type='text' class='form-control' placeholder='Docente' id=docente"+i+">  </div> </td>";
+	cadena+= "<td colspan='10'> <div class='input-group'>   <input type='text' class='form-control' placeholder='Observaciones' id=observaciones"+i+">  </div> </td>";
+	cadena+="<td> <input type='hidden' name='estatus' value='n' id=estatus"+i+">   </td>";
+	cadena+="<td> <input type='hidden' name='unidad' value='"+unidades[i]['codigo'] + "' id=unidad"+i+">   </td>";		
+	cadena+="</div>"
+	
+	cadena+="</tr>";
+
+}
+cadena+="</tbody>";
+cadena+="</table>";
+}
+$(cadena).appendTo('#unidadesT');
+
+}
+function verChek(idcheck){
+
+    if($("#"+idcheck).is(':checked'))
+    	return true;
+	else 
+		return false;
+	
+
+}
+var ajax=function(modulo,accion,vista,formato,parametros,funcion){
+	alert( obtenerCadenaDato(modulo,accion,vista,formato,parametros));
+	alert("entro al ajax");
+	$.ajax({                 //llamada ajax
+			type:"post",
+			dataType: "json",
+			url: "index.php",
+			//data:obtenerCadenaDato(modulo,accion,vista,formato,parametros),	
+			success: function(data){ 
+				funcion(data);
+
+						
+					},
+			error: function(data){ 
+						alert("Error de comunicación con el servidor");
+					}
+		});	
+	
+}
+
+function administrarSeccion(){
+	for (i=0;i< ($('#tablaUnidades >tbody >tr')).length;i++){
+		if ((verChek('check'+i)) && ($('#estatus'+i).val()=='n'))
+			agregarCurso(i);
+
+	}
+//$('#estatus0').val('m');
+//alert($('#estatus0').val());
+//	alert($('#tablaUnidades >tbody >tr').length);
+	//for
+
+
+
+}
+function agregarCurso(i){
+	alert($('#unidad'+i).val());
+	alert($('#docente'+i).val());
+	alert($('#seccion').val());
+	alert($('#fecInicio'+i).val());
+	alert($('#fecFinal'+i).val());
+	alert($('#capacidad'+i).val());
+	alert($('#observaciones'+i).val());
+
+
+
+	$.ajax({                 //llamada ajax
+			type:"post",
+			dataType: "json",
+			url: "index.php",
+			data:{  m_modulo:"curso",             //parámetros
+					m_accion:"agregar", 
+					m_vista:"Agregar", 
+					m_formato:"json", 
+					codPeriodo:$('#codPeriodo').val(),
+					codUniCurricular:$('#unidad'+i).val(),
+					codDocente:$('#docente'+i).val(),
+					seccion:$('#seccion').val(),
+					fechaInicio:$('#fecInicio'+i).val(),
+					fechaFinal:$('#fecFinal'+i).val(),
+					capacidad:$('#capacidad'+i).val(),
+					observaciones:$('#observaciones'+i).val(),
+					},
+			success: function(datos){
+			if (datos.estatus<0)
+
+				mostrarMensaje(datos.mensaje,2)
+			else 
+				mostrarMensaje(datos.mensaje,1)					
+					},
+			error: function(data){ 
+						alert("Error de comunicación con el servidor");
+					}
+		});	
+	
+}
+
+
+//function buscarSecciones
+
+//	$('#tablaUnidades tr').each(function () {
+
+//var pk = $(this).find("td").eq(0).val();
+//alert(pk);
+//var nombre = $(this).find("td").eq(1).val();
+//alert(nombre);
+//var apellidos = $(this).find("td").eq(3).val();
+//alert(apellidos);
+
+//});
+
+//function obtenerCadenaDato(modulo,accion,vista,formato,matriz){
+	//var datos={m_modulo:modulo,m_accion:accion,m_vista:vista,m_formato:formato;
+	
+//	for (i=0;i<matriz.length;i++){
+//		 datos+=matriz[i]['posicion']:;
+//		 datos+=matriz[i]['valor'],;
+//		
+//	}
+//	datos=};
+//	return datos;
+
+
+//}
+ 
+
+//var parametros= new Array();
+ //parametros[0]=new Array(2);
+ //parametros[0]['valor']="1";
+ //parametros[0]['posicion']="codTrayecto";
+
+ 
+//ajax("pensum","listarUnidadesPorTrayecto","ListarUnidades","json",parametros,unidades);
+
+
+
+
+function unidades(datos){
+//	alert(datos.length);
+alert("entroaqeiii");
+alert(datos.estatus);
+}
+
+
+
+
+
+
+
+
+
+//var ajax = function(fn) {
+//	alert("entro al jax");
+  
+ // alert( fn(40,40));
+
+//};
+ 
+   // muestra en la consola 'hola mundo'
+ 
+//function a(a,b){
+//	return a+b;
+//}
+//ajax(a);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function cargarNotas(){
+
+	$("#cargarNotas").remove();
+	//$("<div id='dialogoAgregar'></div>").appendTo("body");
+	$('<div class="modal fade" id="cargarNotas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+	  '<div class="modal-lg">'+
+
+	    '<div class="modal-content">'+
+
+	     '<div class="modal-header">'+
+
+	      ' <button type="button" class="close" data-dismiss="modal">'+
+
+	      '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+
+
+	       '<h4 class="modal-title" id="myModalLabel">Cargar Notas</h4>'+
+
+	       '<h5>Profesor: Johan Alamo</h5>'+
+
+	      '</div>'+
+
+	    '<div class="modal-body">'+
+
+	    	'<div class="row">'+
+
+	    	'<div class="col-md-3">'+
+
+	    	'<div class="panel panel-default">'+
+
+	    	'<div class="panel-heading">Lista de Cursos</div>'+
+
+	    	'</div>'+
+
+	    	'<ul class="list-group">'+
+			  '<a href="" class="list-group-item">2014 - Programación (2)(2-A)</a>'+
+			  '<a href="" class="list-group-item">2014 - Programación (1)(1-A)</a>'+
+			  '<a href="" class="list-group-item active">2014 - Base de Datos (2)(2-B)</a>'+
+			  '<a href="" class="list-group-item">2014 - Matemática (1)(1-B)</a>'+
+			'</ul>'+
+
+			'</div>'+
+
+			'<div class="col-md-9">'+
+
+				'<table class="table table-hover">'+
+
+					'<tr class="active">'+
+
+						'<td>'+
+							'N°'+
+						'</td>'+
+						'<td>'+
+							'Nombre'+
+						'</td>'+
+						'<td>'+
+							'Asis'+
+						'</td>'+
+						'<td>'+
+							'Nota'+
+						'</td>'+
+						'<td>'+
+							'Estado'+
+						'</td>'+
+						'<td>'+
+							'Observaciones'+
+						'</td>'+
+
+					'</tr>'+
+
+					'<tr>'+
+
+						'<td>'+
+							'1'+
+						'</td>'+
+						'<td>'+
+							'Jhonny Vielma'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" size="2" placeholder="Asistencia">'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" size="2" placeholder="Nota">'+
+						'</td>'+
+						'<td>'+
+							'<select class="form-control">'+
+								'<option>Activo</option>'+
+								'<option>Inactivo</option>'+
+							'</select>'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" placeholder="Observaciones">'+
+						'</td>'+
+
+					'</tr>'+
+					'<tr>'+
+
+						'<td>'+
+							'2'+
+						'</td>'+
+						'<td>'+
+							'Juan De Sousa'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" size="2" placeholder="Asistencia">'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" size="2" placeholder="Nota">'+
+						'</td>'+
+						'<td>'+
+							'<select class="form-control">'+
+								'<option>Activo</option>'+
+								'<option>Inactivo</option>'+
+							'</select>'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" placeholder="Observaciones">'+
+						'</td>'+
+
+					'</tr>'+
+					'<tr>'+
+
+						'<td>'+
+							'3'+
+						'</td>'+
+						'<td>'+
+							'Geraldine Castillo'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" size="2" placeholder="Asistencia">'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" size="2" placeholder="Nota">'+
+						'</td>'+
+						'<td>'+
+							'<select class="form-control">'+
+								'<option>Activo</option>'+
+								'<option>Inactivo</option>'+
+							'</select>'+
+						'</td>'+
+						'<td>'+
+							'<input type="text" class="form-control" placeholder="Observaciones">'+
+						'</td>'+
+
+					'</tr>'+
+
+				'</table>'+
+
+			'</div>'+
+
+			'</div>'+
+
+			'<div class="modal-footer">'+
+				'<button type="button" class="btn btn-success" onclick="javascript:mostrarMensaje("Curso Agregado",1)" data-dismiss="modal">Guardar</button>'+
+				'<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>'+
+		    '</div>'+
+
+			'</div>'+
+
+	    '</div>'+
+
+	      '</div>'+
+	    '</div>').appendTo("body");
+}
+
+
+
+
+//~ function buscarInformacion(modulo,accion,vista,formato,array(), funcion_success, funcion_error);

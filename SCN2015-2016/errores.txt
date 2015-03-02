@@ -1,0 +1,21 @@
+
+**************************** Error n° 1 *****************************
+codigo Error: 1
+Mensaje error: acción inválida en el controlador del Periodo: listarPIP
+Archivo Error: /var/www/html/SCN2015-2016/modulos/periodo/PeriodoControlador.php
+Linea Error: 24
+Trayecto:
+		#0 /var/www/html/SCN2015-2016/modulos/principal/PrincipalControlador.clase.php(148): PeriodoControlador::manejarRequerimiento()
+		#1 /var/www/html/SCN2015-2016/modulos/principal/PrincipalControlador.clase.php(68): PrincipalControlador::manejarRequerimiento()
+		#2 /var/www/html/SCN2015-2016/index.php(44): PrincipalControlador::iniciar()
+		#3 {main}
+**************************** Error n° 2 *****************************
+codigo Error: 2
+Mensaje error: acción inválida en el controlador del Periodo: listarPIP
+Archivo Error: /var/www/html/SCN2015-2016/modulos/periodo/PeriodoControlador.php
+Linea Error: 24
+Trayecto:
+		#0 /var/www/html/SCN2015-2016/modulos/principal/PrincipalControlador.clase.php(148): PeriodoControlador::manejarRequerimiento()
+		#1 /var/www/html/SCN2015-2016/modulos/principal/PrincipalControlador.clase.php(68): PrincipalControlador::manejarRequerimiento()
+		#2 /var/www/html/SCN2015-2016/index.php(44): PrincipalControlador::iniciar()
+		#3 {main}

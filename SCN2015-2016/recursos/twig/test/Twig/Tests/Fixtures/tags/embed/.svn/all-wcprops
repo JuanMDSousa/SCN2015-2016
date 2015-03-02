@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/896/trunk/test/Twig/Tests/Fixtures/tags/embed
+END
+with_extends.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/893/trunk/test/Twig/Tests/Fixtures/tags/embed/with_extends.test
+END
+multiple.test
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/896/trunk/test/Twig/Tests/Fixtures/tags/embed/multiple.test
+END
+basic.test
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/893/trunk/test/Twig/Tests/Fixtures/tags/embed/basic.test
+END

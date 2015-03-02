@@ -1,0 +1,115 @@
+{% extends 'Curso.html.twig' %}
+
+{% block contenido %}
+	<div id="headerwrap">
+		<div class="container">
+			<div class="row-fluid">
+				<input  id ="codPeriodo" type="hidden" name="codPerido" value="101">
+				<input 	id="prof" type="hidden" value="1">
+				<div class="col-lg-12">
+					<br>
+					<br>
+					<h2> Lista de Cursos</h2>
+					<h2> Profesor: {{cursos[0].nombrecompleto}}</h2>
+					
+					
+					<div class="row-fluid">
+						<div class="col-md-6">
+						</div>
+
+					</div>
+
+					<br>
+					<br>
+					
+					<br>
+
+					<div id='listarC'>
+					<table class="table" id="tTabla"> 
+							{% if (cursos == null) %}
+								No hay cursos
+							{% endif %}
+
+							{% set trayecto = '' %}
+
+							{% set seccion = '' %}
+
+					    	{% for curso in cursos %}
+
+					    	{% if (trayecto != curso.num_trayecto or seccion != curso.seccion) %}
+
+					    		{% set seccion = curso.seccion %}
+					    		{% set trayecto = curso.num_trayecto %}
+
+							    <tr class="titulo" >
+							    	<td  colspan='7' >
+
+							    			<div class="col-md-8 col-md-offset-2">
+							    				Trayecto: {{ trayecto }} - Sección: {{curso.seccion}}
+
+											</div>
+											<div class="col-md-2">
+												{% if (permisos.obtenerPermiso('curso','insert')) %}
+												<button type="button" onClick="configurarSeccion('dialogoSeccion','Administrar Sección','administrar','{{curso.num_trayecto}}','{{curso.seccion}}','{{curso.cod_trayecto}}')" class="btn btn-warning" data-toggle="modal" data-target="#dialogoSeccion">
+										Administrar Sección 
+										{% endif %}
+							    		<div>
+							    		
+							    	</td>
+							    	
+									
+							    </tr>
+							    <tr class="active">
+							            <td>Unidad Curricular</td>
+							            <td>Cantidad de Estudiantes</td>
+							            <td>Capacidad</td>
+							            <td>Fecha de Inicio</td>
+							            <td>Fecha de Fin</td> 
+							            <td></td>
+							            <td></td> 
+							           
+							    </tr>
+
+					    	{% endif %}		    
+						<tr>
+							<td>
+								{{curso.nombre}}   
+							</td>
+							
+							<td> 
+								{{curso.cantidad_estudiantes}}   
+							</td>
+							<td> 
+								{{curso.capacidad}}    
+							</td>
+							<td> 
+								{{ curso.fec_inicio|date("d-m-Y") }}   
+							</td>
+							<td> 
+								{{ curso.fec_final|date("d-m-Y") }}  
+							</td>
+							<td>
+								{% if (permisos.obtenerPermiso('estudianteCurso','select')) %}
+								<button type="button" class="btn btn-primary" onClick="verEstudiantes({{curso.codigo}},'{{curso.nombre}}','Profesor: {{curso.nombrecompleto}}','Aceptar')" data-toggle="modal" data-target="#verEstudiantes" title="Ver Estudiantes">
+										<i class="icon-group"></i>
+								</button>
+								{% endif %}	
+							</td>
+							<td>
+								{% if (permisos.obtenerPermiso('estudianteCurso','update')and (login.obtenerCodigo()==curso.cod_docente)) %}
+								<button type="button" class="btn btn-info" onClick="cargarNotas({{curso.codigo}},'{{curso.nombre}}','Profesor: {{curso.nombrecompleto}}')" class="btn btn-info" data-toggle="modal" data-target="#cargarNotas" title="Cargar Notas">
+									<i class="icon-book"></i><i class="icon-pencil"></i>
+								</button>
+								{% endif %}
+							</td>
+						</tr>	
+							{% endfor %}
+		
+					</table>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>		
+{% endblock %}

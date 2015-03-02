@@ -1,0 +1,61 @@
+{% extends 'Estudiante.html.twig' %}
+{% block headVista %}
+	<style>td {text-align:center;}</style>
+{% endblock %}
+
+{% block contenido %}
+	<br><br>
+	<div class="container">
+		<div class="row-fluid">
+			<div class="col-md-12">
+				<center><h2>ESTUDIANTES</h2></center>
+				
+				<div class="col-md-12" id="tablaEst">
+					<table class="table" id="tabla2">
+						<tr class="titulo">
+							<td>Número</td>	
+							<td>Cédula</td>		
+							<td>Nombre</td>
+							<td>Departamento</td>
+							<td>Pensum</td>
+							<td>Estado</td>
+							<td>Correo Personal</td>
+
+							<td colspan=2>
+
+							{% if (permisos.obtenerPermiso('estudiante','insert'))  %}	
+							<button class="btn btn-success" title="Agregar Estudiante" onclick="administrarEstudiante()">Agregar Estudiante</button>	
+							{% endif %}				
+							
+							</td>
+							</td><td></td>
+						</tr>
+						{% set cont = 0 %}
+						{% for estudiantes in estudiante %}
+							<tr class="tr">
+								{% set cont = cont + 1 %}
+								<td>{{cont}}</td>
+								<td>{{estudiantes.cedula}}</td>						
+								<td>{{estudiantes.nombre1}} {{estudiantes.apellido1}}</td>
+								<td>{{estudiantes.nombre}}</td>
+								<td>{{estudiantes.nom_corto}}</td>
+								<td>{{estudiantes.nombre_estado}}</td>
+								<td>{{estudiantes.cor_personal}}</td>
+								<td colspan="2">
+									{% if (permisos.obtenerPermiso('estudiante','update'))  %}	
+									<button class="btn btn-warning" title="Ver Estudiante" onclick="obtenerEstudiante({{estudiantes.codigo}})">
+									<i class="icon-eye-open"></i></button>
+									{% endif %}	
+									{% if (permisos.obtenerPermiso('estudiante','delete'))  %}	
+									<button class="btn btn-danger" title="Retirar Estudiante" onclick="retirar({{estudiantes.codigo}});"><i class="icon-remove"></i></button>
+									{% endif %}	
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>	
+		</div>	
+	</div>	
+	<br><br><br><br>
+{% endblock %}

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/736/trunk/test/Twig/Tests/Loader
+END
+FilesystemTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/670/trunk/test/Twig/Tests/Loader/FilesystemTest.php
+END
+ArrayTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/736/trunk/test/Twig/Tests/Loader/ArrayTest.php
+END
+ChainTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/640/trunk/test/Twig/Tests/Loader/ChainTest.php
+END

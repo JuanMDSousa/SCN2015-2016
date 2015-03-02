@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/895/trunk/test/Twig/Tests/Fixtures/tags/autoescape
+END
+functions.test
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/functions.test
+END
+with_filters_arguments.test
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/with_filters_arguments.test
+END
+objects.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/objects.test
+END
+raw.test
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/raw.test
+END
+with_pre_escape_filters.test
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/with_pre_escape_filters.test
+END
+literal.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/literal.test
+END
+with_preserves_safety_filters.test
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/with_preserves_safety_filters.test
+END
+blocks.test
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/blocks.test
+END
+basic.test
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/895/trunk/test/Twig/Tests/Fixtures/tags/autoescape/basic.test
+END
+type.test
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/type.test
+END
+nested.test
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/nested.test
+END
+strategy.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/strategy.test
+END
+double_escaping.test
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/double_escaping.test
+END
+with_filters.test
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/894/trunk/test/Twig/Tests/Fixtures/tags/autoescape/with_filters.test
+END

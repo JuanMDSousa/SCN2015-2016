@@ -1,0 +1,525 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: Minimal - Free Bootstrap 3 Theme
+ * Version: 1.0
+ * URL: http://blacktie.co
+ */
+
+body {
+    font-family: 'EB Garamond', serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: black;
+    overflow-x:hidden;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    color: #333;
+}
+
+
+/* Paragraph & Typographic */
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: #f85c37;
+    word-wrap: break-word;
+
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:before,
+a:after {
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+/* ==========================================================================
+   Wrap Sections
+   ========================================================================== */
+
+#headerwrap {
+	background: white;
+	margin-top: -10px;
+	padding-top:20px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 700px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#headerwrap h1 {
+	color: black;
+	font-size: 70px;
+	font-weight: 700;
+}
+
+#headerwrap h3 {
+	color: black;
+	font-size: 30px;
+	font-weight: 100;
+    font-family: 'EB Garamond', serif;
+    font-style: oblique;
+}
+
+#headerwrap .logo {
+	text-align: left;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+
+/* Footer Wrap */
+
+#f {
+	background: #1a1a1a;
+	height:200px;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	text-align: center
+}
+
+#f h3 {
+	color: white;
+	font-size: 28px;
+	font-weight: 700;
+	letter-spacing: 1px;	
+}
+
+#f i {
+	font-size: 8px;
+	color: #fff;
+    padding: 3px;
+}
+
+#f p {
+	font-size: 20px;
+	color: #f2f2f2;
+}
+
+#f img {
+	text-align: center;
+}
+
+
+/* MENU CONF*/
+
+.menu {
+	position: fixed;
+	right: -200px;
+	width: 260px;
+	height: 100%;
+	top: 0px;
+	z-index: 10;
+	text-align: left;
+}
+
+
+.menu.menu-open {
+	right: 0px;
+}
+
+
+.menu-wrap {
+	position: absolute;
+	top: 50px;
+	left: 60px;
+	background: #1a1a1a;
+	width: 200px;
+	height: 100%;
+	overflow:auto;
+}
+
+
+.menu h1.logo a {
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 0.15em;
+	line-height: 40px;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin-top: 20px;
+	cursor:pointer;
+}
+
+.menu h1.logo1 a {
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
+	font-weight: 900;
+	letter-spacing: 0.15em;
+	line-height: 40px;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin-top: 0px;
+	cursor:pointer;
+	text-align:center;
+}
+
+.menu h1.logo a:hover {
+	color: #32A8A0;
+}
+
+.menu h1.logo1 a:hover {
+	color: #32A8A0;
+}
+
+.menu img.logo {
+	margin: 20px 0;
+	max-width: 160px;
+}
+
+.menu a {
+	margin-left:20px;
+	color: #808080;
+	display: block;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 25px;
+	text-transform: uppercase;
+}
+
+.menu a:hover {
+	color: #ffffff;
+}
+
+.menu a:active {
+	color: #ffffff;
+}
+
+.menu a > i {
+	float: right;
+	display: inline-block;
+	vertical-align: middle; 
+	text-align: left;
+	width: 25px;
+	font-size: 14px;
+	line-height: 40px;
+	margin: 25px 20px;
+}
+
+.menu-close {
+	cursor: pointer;
+	display: block;
+	position: absolute;
+	font-size: 14px;
+	color: #808080;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	top: 5px;
+	right: 5px;
+	-webkit-transition: all .1s ease-in-out;
+	   -moz-transition: all .1s ease-in-out;
+		-ms-transition: all .1s ease-in-out;
+		 -o-transition: all .1s ease-in-out;
+			transition: all .1s ease-in-out;
+}
+
+.menu-close:hover {
+	color: #ffffff;
+	-webkit-transition: all .1s ease-in-out;
+	   -moz-transition: all .1s ease-in-out;
+		-ms-transition: all .1s ease-in-out;
+		 -o-transition: all .1s ease-in-out;
+			transition: all .1s ease-in-out;
+}
+
+/* Push the body after clicking the menu button */
+.body-push {
+	overflow-x: hidden;
+	position: relative;
+	left: 0;
+}
+
+.body-push-toright {
+	left: 200px;
+}
+
+.body-push-toleft {
+	left: -200px;
+}
+
+.menu,
+.body-push {
+	-webkit-transition: all .1s ease;
+	   -moz-transition: all .1s ease;
+		-ms-transition: all .1s ease;
+		 -o-transition: all .1s ease;
+			transition: all .1s ease;
+}
+
+#menuToggle {
+	position: absolute;
+	top: 50px;
+	left: 10px;
+	z-index: 11;
+	display: block;
+	text-align: center;
+	font-size: 14px;
+	color: #ffffff;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	background: rgba(0,0,0,0.25);
+	-webkit-transition: all 1s ease-in-out;
+	   -moz-transition: all 1s ease-in-out;
+		-ms-transition: all 1s ease-in-out;
+		 -o-transition: all 1s ease-in-out;
+			transition: all 1s ease-in-out;
+}
+
+#menuToggle:hover {
+	color: #ffffff;
+	background:gray;
+	-webkit-transition: all 1s ease-in-out;
+	   -moz-transition: all 1s ease-in-out;
+		-ms-transition: all 1s ease-in-out;
+		 -o-transition: all 1s ease-in-out;
+			transition: all 1s ease-in-out;
+}
+
+.menu-wrap .form-control{
+	margin:0 auto;
+	width:90%;
+	height:40px;
+	font-size:13px;
+	padding:3px;
+}
+
+/********MENU DE LOGIN************/
+
+.menuL {
+	position: fixed;
+	left: -200px;
+	width: 260px;
+	height: 100%;
+	top: 0px;
+	z-index: 10;
+	text-align: right;
+}
+
+
+.menuL.menu-openL {
+	left: 0px;
+}
+
+
+.menu-wrapL {
+	position: absolute;
+	top: 50px;
+	right: 60px;
+	background: #1a1a1a;
+	width: 200px;
+	height: 100%;
+	overflow:auto;
+}
+
+
+.menuL h1.logo a {
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 0.15em;
+	line-height: 40px;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin-top: 20px;
+	cursor:pointer;
+}
+
+.menuL h1.logo1 a {
+	font-family: 'Oswald', sans-serif;
+	font-size: 20px;
+	font-weight: 900;
+	letter-spacing: 0.15em;
+	line-height: 40px;
+	text-transform: uppercase;
+	color: #ffffff;
+	margin-top: 0px;
+	cursor:pointer;
+	text-align:center;
+}
+
+.menuL h1.logo a:hover {
+	color: #32A8A0;
+}
+
+.menuL h1.logo1 a:hover {
+	color: #32A8A0;
+}
+
+
+.menuL img.logo {
+	margin: 20px 0;
+	max-width: 160px;
+}
+
+.menuL a {
+	margin-right:20px;
+	color: #808080;
+	display: block;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 25px;
+	text-transform: uppercase;
+}
+
+.menuL a:hover {
+	color: #ffffff;
+}
+
+.menuL a:active {
+	color: #ffffff;
+}
+
+.menuL a > i {
+	float: right;
+	display: inline-block;
+	vertical-align: middle; 
+	text-align: left;
+	width: 25px;
+	font-size: 14px;
+	line-height: 40px;
+	margin: 25px 20px;
+}
+
+.menu-closeL {
+	cursor: pointer;
+	display: block;
+	position: absolute;
+	font-size: 14px;
+	color: #808080;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	top: 5px;
+	left: 5px;
+	-webkit-transition: all .1s ease-in-out;
+	   -moz-transition: all .1s ease-in-out;
+		-ms-transition: all .1s ease-in-out;
+		 -o-transition: all .1s ease-in-out;
+			transition: all .1s ease-in-out;
+}
+
+.menu-closeL:hover {
+	color: #ffffff;
+	-webkit-transition: all .1s ease-in-out;
+	   -moz-transition: all .1s ease-in-out;
+		-ms-transition: all .1s ease-in-out;
+		 -o-transition: all .1s ease-in-out;
+			transition: all .1s ease-in-out;
+}
+
+/* Push the body after clicking the menu button */
+.body-push {
+	overflow-x: hidden;
+	position: relative;
+	left: 0;
+}
+
+.body-push-toright {
+	left: 200px;
+}
+
+.body-push-toleft {
+	left: -200px;
+}
+
+.menuL,
+.body-push {
+	-webkit-transition: all .1s ease;
+	   -moz-transition: all .1s ease;
+		-ms-transition: all .1s ease;
+		 -o-transition: all .1s ease;
+			transition: all .1s ease;
+}
+
+#menuToggleL {
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	z-index: 11;
+	display: block;
+	text-align: center;
+	font-size: 14px;
+	color: #ffffff;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	background: rgba(0,0,0,0.25);
+	-webkit-transition: all 1s ease-in-out;
+	   -moz-transition: all 1s ease-in-out;
+		-ms-transition: all 1s ease-in-out;
+		 -o-transition: all 1s ease-in-out;
+			transition: all 1s ease-in-out;
+}
+
+#menuToggleL:hover {
+	color: #ffffff;
+	background:gray;
+	-webkit-transition: all 1s ease-in-out;
+	   -moz-transition: all 1s ease-in-out;
+		-ms-transition: all 1s ease-in-out;
+		 -o-transition: all 1s ease-in-out;
+			transition: all 1s ease-in-out;
+}
+
+/*********************ALERTAS***********************/
+
+.alert-success {
+  
+}

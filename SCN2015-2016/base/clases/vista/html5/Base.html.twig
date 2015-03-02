@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+		<head>
+		{% block head %}
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="Sistema Control de Notas del IUT-FRP">
+			<link rel="shortcut icon" href="recursos/assets/ico/favicon.ico">
+			
+				<title>{% block titulo %}Sistema Control de Notas{% endblock %}</title>
+			
+			
+			{% block headBase %}
+				<!-- Bootstrap core CSS -->
+				
+				<link href="recursos/assets/css/bootstrap.css" rel="stylesheet">
+				
+				<link href="recursos/select/bootstrap-select.css" rel="stylesheet">
+				
+				<link href="recursos/date/bootstrap-datetimepicker.css" rel="stylesheet">
+								
+				<link rel="stylesheet" href="recursos/assets/css/font-awesome.min.css">
+
+				<link rel="stylesheet" href="recursos/jqueryUI/jquery-ui.css">
+
+				<link rel="stylesheet" href="recursos/jqueryUI/bootstrapUI.css">
+								
+				<link href="recursos/assets/css/main.css" rel="stylesheet">
+				
+				<link href="modulos/principal/vista/html5/css/estilo.css" rel="stylesheet">
+				<script type="text/javascript">  {{ permisos.obtenerEnJavaScript() }} </script>
+				<script src="modulos/login/vista/html5/javascript/Login.js"> </script>
+		
+
+				<script src="recursos/assets/js/jquery.min.js"></script>
+		
+				<script src="recursos/assets/js/classie.js"></script>
+				<script src="recursos/assets/js/bootstrap.min.js"></script>
+
+				<script src="recursos/jqueryUI/jquery-ui.js"></script>
+
+				<script src="recursos/assets/js/smoothscroll.js"></script>
+				<script src="recursos/date/moment.js"></script>
+				<script src="recursos/date/bootstrap-datetimepicker.js"></script>
+				
+				<script src="recursos/select/bootstrap-select.js"></script>
+
+				
+
+			{% endblock %}
+			
+			{% block headModulo %}
+			{% endblock %}
+			
+			{% block headVista %}
+			{% endblock %}
+
+
+		{% endblock %}
+	
+		</head>
+	
+			<body data-spy="scroll" data-offset="0" data-target="#theMenu">
+    		
+    		{% block body %}
+			{% block menuDerecho %}
+
+
+			<!-- Menu -->
+			<nav class="menu" id="theMenu">
+			<div class="menu-wrap">
+<!--
+				<img src="recursos/imgPropias/iconos/Log.png" style="width:240px;height:150px;position:relative;top:-10px;left:-50px;"></img>
+-->
+				<h1 class="logo1"><a href="index.php">SCN</a></h1>
+				<i class="icon-remove menu-close"></i>
+				<a href="#about" class="smoothScroll">Personas</a>
+				<a href="index.php?m_modulo=curso&m_formato=html5&m_accion=listar&m_vista=Listar" class="smoothScroll">Curso</a>
+				<a href="#contact" class="smoothScroll">Mensajes</a>
+				<a href="" class="smoothScroll">Acerca de</a>
+			
+				<form id="patronB" action="" method="GET">
+					<h2 class="logo"><a>BUSCARDOR</a></h2>
+					<input type="text" id='buscadorG'
+									class="form-control buscadorP" 
+									placeholder="Introduzca patrón de búsqueda"
+									onkeyup="buscarListar(this.value)"
+									size="50"
+									>
+				</form>
+				<h1 class="logo"><a>REPORTES</a></h1>
+				<a href="" class="smoothScroll">Listados</a>
+				<a href="" class="smoothScroll">PDF</a>
+			</div>
+			<!-- Menu button -->
+			<div id="menuToggle"><i class="icon-reorder"></i></div>
+			</nav>
+		{% endblock %}
+
+	<!-- MENU DE LOGIN -->
+		{% block menuIzquierdo %}
+			<nav class="menuL" id="theMenuL">
+			<div class="menu-wrapL">
+				<i class="icon-remove menu-closeL"></i>
+				<h1 class="logo"><a>JHONNY VIELMA</a></h1>
+				<a href="#about" class="smoothScroll">Contraseña</a>
+				<a href="#portfolio" class="smoothScroll">Errores</a>
+				<a href="#contact" class="smoothScroll">Auditoria</a>
+				<a href="#contact" class="smoothScroll">Auditoria</a>
+			</div>
+		
+					<!-- Menu button -->
+				<div id="menuToggleL">
+					<i class="icon-info"></i>
+				</div>
+			</nav>
+		{% endblock %}
+	<!-- ******************************** -->
+	{% block menuSuperior %}
+		<nav class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="icon-bar"></span>	
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+<!--
+					<img src="recursos/imgPropias/iconos/Log.png" style="width:60px;height:35px;position:absolute;top:10px;left:-10px;"></img>
+-->
+					<a class="navbar-brand" href="index.php">SCN</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="index.php?m_modulo=persona&m_formato=html5&m_accion=listar&m_vista=Listar" class="dropdown-toggle" data-toggle="dropdown">Persona<span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									
+									<li><a href="index.php?m_modulo=persona&m_formato=html5&m_accion=listar&m_vista=Listar">Personas</a></li>
+									
+									<li><a href="index.php?m_modulo=estudiante&m_formato=html5&m_accion=listar&m_vista=Listar">Estudiantes</a></li>
+									<li><a href="index.php?m_modulo=docente&m_formato=html5&m_accion=listar&m_vista=Listar">Docentes</a></li>
+								</ul>
+							</li>
+							
+							<li class="dropdown"><a href="index.php?m_modulo=curso&m_formato=html5&m_accion=listar&m_vista=Listar" class="dropdown-toggle" data-toggle="dropdown">Cursos<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu" id='infoC'>
+									<li><a href="index.php?m_modulo=curso&m_formato=html5&m_accion=listar&m_vista=Listar">Lista de Cursos</a></li>
+									<li><a href="index.php?m_modulo=curso&m_formato=html5&m_accion=listarD&m_vista=ListarD">Mis Cursos</a></li>
+									
+									{%if (login.obtenerTipo=='A')%} 
+									<li><a href="index.php?m_modulo=curso&m_formato=html5&m_accion=inscribirEst&m_vista=CursosEstudiante">Inscribir estudiante</a></li>
+									{% endif %} 
+									
+							</ul>
+							</li>
+
+							<li class="dropdown"><a href="index.php?m_modulo=instituto&m_formato=html5&			m_accion=listar&m_vista=Listar" class="dropdown-toggle" data-toggle="dropdown">Institutos<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+									<li><a href="index.php?m_modulo=instituto&m_formato=html5&m_accion=listar&m_vista=Listar">Lista Institutos</a></li>
+								
+							</ul>
+							</li>
+
+							<li class="dropdown">
+								<li><a href="index.php?m_modulo=pensum&m_formato=html5&m_accion=listar&m_vista=Listar">Pensum</a></li>							
+							</li>
+							
+							<li class="dropdown">
+								<li><a href="index.php?m_modulo=periodo&m_formato=html5&m_accion=listar&m_vista=Listar">Periodo</a></li>							
+							</li>
+
+							<li class="dropdown">
+								<a href="#" id="notificacion" class="dropdown-toggle" data-toggle="dropdown">Notificaciones 
+									
+								</a>
+								<ul class="dropdown-menu" role="menu" id="notMensaje">
+									
+								</ul>
+							</li>
+						</ul>
+
+						<form class="navbar-form navbar-left" role="search" action="">
+					        <div class="form-group">
+					          <input type="text" id='buscadorM'
+									class="form-control" 
+									placeholder="Introduzca patrón de búsqueda"
+									onkeyup="buscarListar(this.value)"
+									size="50">
+					        </div>
+					    </form>
+						
+						 {% block usuario %}
+
+						<ul id="userD" class="nav navbar-nav navbar-right">
+								{% if (login == null) %}
+								<li id="nombreUsuario" class="dropdown">
+									<a>
+										<button onclick="dialogoSesion()" title="Iniciar Sesión" class="login" data-toggle="modal" data-target="#dialogoSesion"  >
+											<i class="icon-off"></i> Iniciar Sesión
+										</button>
+									</a>
+								</li>
+								{% else %}
+								<li id="nombreUsuario" class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario: {{login.obtenerNombre}} {{login.obtenerApellido}} <span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Ver Perfil</a></li>
+									<li><a href="#">Configuración</a></li>
+									<li><a href="#">Cambiar Contraseña</a></li>
+									<li><a  onclick="cerrarSesion()">Salir</a></li>
+								</ul>
+								</li>
+							{% endif %}
+							
+							</ul>
+						{% endblock %}
+					</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	{% endblock %}
+	<!-- ******************************** -->
+	<div class="alerts">
+	
+	</div>
+		<div id="wrap">
+	{% block contenido %}
+	
+	{% endblock %}
+	</div>
+	{% block desarrolladores %}
+		<footer>
+			<div id="f" class="smoothScroll">
+			<div class="row">
+				<div class="col-md-12">
+					<button class="btn" id="btnD"><span class="glyphicon glyphicon-chevron-up"></span></button>
+				</div>
+			</div>
+				<div class="row" id="desarrolladores">
+				{% block consejos %}
+					<div class="col-md-5">
+						<h1>DESARROLLADORES:</h1>
+					</div>
+					<div class="col-md-3">
+						<h4>Jhonny Vielma</h4>
+						<h4>Juan De Sousa</h4>
+						<h4>Geraldine Castillo</h4>
+						<h4>Hector Zea</h4>
+						<h4>Leonardo Camacaro</h4>
+					</div>
+					<div class="col-md-4">
+						<h1>Tutor:</h1>
+						<h4>Johan Álamo</h4>
+					</div>
+				{% endblock %}
+				</div>
+			</div>
+		</footer>
+	{% endblock %}
+
+	    <!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+				
+				<script src="recursos/assets/js/main.js"></script>
+				<script src="recursos/javascript/LibreriaMVC.js"></script>
+				<script src="recursos/javascript/validaciones.js"></script>
+		
+
+	{% endblock %}
+
+	</body>
+	
+	</html>

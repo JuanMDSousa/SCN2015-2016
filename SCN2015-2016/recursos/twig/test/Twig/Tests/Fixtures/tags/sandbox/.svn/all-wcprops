@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/865/trunk/test/Twig/Tests/Fixtures/tags/sandbox
+END
+not_valid2.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/865/trunk/test/Twig/Tests/Fixtures/tags/sandbox/not_valid2.test
+END
+simple.test
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/865/trunk/test/Twig/Tests/Fixtures/tags/sandbox/simple.test
+END
+not_valid1.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/865/trunk/test/Twig/Tests/Fixtures/tags/sandbox/not_valid1.test
+END

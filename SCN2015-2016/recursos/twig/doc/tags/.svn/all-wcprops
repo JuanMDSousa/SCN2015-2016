@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/!svn/ver/895/trunk/doc/tags
+END
+do.rst
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/772/trunk/doc/tags/do.rst
+END
+from.rst
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/!svn/ver/665/trunk/doc/tags/from.rst
+END
+index.rst
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/893/trunk/doc/tags/index.rst
+END
+import.rst
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/709/trunk/doc/tags/import.rst
+END
+extends.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/833/trunk/doc/tags/extends.rst
+END
+embed.rst
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/894/trunk/doc/tags/embed.rst
+END
+flush.rst
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/765/trunk/doc/tags/flush.rst
+END
+spaceless.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/839/trunk/doc/tags/spaceless.rst
+END
+include.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/865/trunk/doc/tags/include.rst
+END
+filter.rst
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/665/trunk/doc/tags/filter.rst
+END
+for.rst
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/869/trunk/doc/tags/for.rst
+END
+raw.rst
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/665/trunk/doc/tags/raw.rst
+END
+autoescape.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/895/trunk/doc/tags/autoescape.rst
+END
+block.rst
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/715/trunk/doc/tags/block.rst
+END
+set.rst
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/665/trunk/doc/tags/set.rst
+END
+use.rst
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/665/trunk/doc/tags/use.rst
+END
+sandbox.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/865/trunk/doc/tags/sandbox.rst
+END
+if.rst
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/800/trunk/doc/tags/if.rst
+END
+macro.rst
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/699/trunk/doc/tags/macro.rst
+END

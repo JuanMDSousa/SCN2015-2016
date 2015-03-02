@@ -1,0 +1,83 @@
+{% extends 'Persona.html.twig' %}
+{% block headVista %}
+	<style>
+		td
+		{
+			text-align:center;
+		}		
+	</style>
+
+{% endblock %}
+{% block contenido %}
+<br>
+<br>
+<div class="container">
+<div class="row-fluid">
+	<div class="col-md-12">
+	<center><h2>PERSONAS</h2></center>	
+	<div id="tabla1">
+	<table class="table" id="tabla2">
+		<tr class="titulo">
+			<td>
+				Número	
+			</td>
+			<td>
+				Cédula	
+			</td>
+			<td>
+				Nombre Completo
+			</td>
+			<td>
+				Sexo
+			</td>
+			<td>
+				Teléfono
+			</td>
+			<td>
+				Correo Personal
+			</td>
+		
+				<td colspan="2">
+				{% if (permisos.obtenerPermiso('persona','insert'))  %}	
+				<button class="btn btn-success" title="Agregar Persona" onclick="administrarPersona()" data-target="#preagregarpersona" data-toggle="modal">
+					Agregar Persona
+				</button>				
+				{% endif %}				
+			</td>
+			
+		
+			
+		</tr>
+	{% set cont = 0 %}
+	{% for personas in persona %}
+		<tr class="tr">
+			{% set cont = cont + 1 %}
+			<td>{{cont}}</td>
+			<td>{{personas.cedula}}</td>
+			<td>{{personas.nombre1}} {{personas.apellido1}}</td>
+			<td>{{personas.sexo}}</td>
+			<td>{{personas.telefono1}}</td>
+			<td>{{personas.cor_personal}}</td>
+			<td colspan="2">
+
+				<button class="btn btn-warning" title="Ver Persona" onclick="obtenerPersona({{personas.cedula}})">
+					<i class="icon-eye-open"></i>
+				</button>
+				{% if (permisos.obtenerPermiso('persona','delete'))  %}	
+				<button class="btn btn-danger" title="Eliminar Persona" onclick="eliminar({{personas.cedula}});">
+					<i class="icon-remove"></i>
+				</button>
+				{% endif %}					
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+	</div>	
+	
+	</div>	
+	</div>	
+</div>	
+<br>
+	<br><br>
+	<br>
+{% endblock %}

@@ -1,0 +1,50 @@
+;(function(){
+
+			// Menu settings
+			$('#menuToggle, .menu-close').on('click', function(){
+				$('#menuToggle').toggleClass('active');
+				$('body').toggleClass('body-push-toleft');
+				$('#theMenu').toggleClass('menu-open');
+			});
+
+			$('#menuToggleL, .menu-closeL').on('click', function(){
+				$('#menuToggleL').toggleClass('active');
+				$('body').toggleClass('body-push-toright');
+				$('#theMenuL').toggleClass('menu-openL');
+			});
+
+	
+})(jQuery)
+
+	function cambiarTema(){
+		if(document.getElementById('headerwrap').style.backgroundColor=='black'){
+			document.getElementById('headerwrap').style.backgroundColor='white';
+		}
+		else{
+			document.getElementById('headerwrap').style.backgroundColor='black';
+		}
+	}
+
+	function mostrarMensaje(mensaje, tipo){
+	
+			var cont = $("<div class='alert alert-" + ((tipo==1)? "success" : "danger") + " alert-dismissible alert-link fade in' role='alert'>"
+							+ "<button type='button' class='close' data-dismiss='alert'>"
+							+ "<span aria-hidden='true'>&times;</span>"
+							+ "</button>"
+							+ "<strong>"+ ((tipo==1)? "¡Éxito!": "¡Error!") + "</strong> <a href=''>"+ mensaje+ "</a>"
+							+ "</div>");
+			
+			$(cont).appendTo(".alerts");
+
+			$(cont).fadeOut(10000, 0);
+
+			$(cont).hover(
+				function(){
+					$(this).stop(true,true).fadeIn();
+
+				},
+				function(){
+					$(this).fadeOut(4000, 0);
+				}
+			);
+	}

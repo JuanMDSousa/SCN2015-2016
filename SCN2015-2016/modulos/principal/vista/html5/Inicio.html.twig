@@ -1,0 +1,108 @@
+{% extends 'Base.html.twig' %}
+
+{% block headModulo %}
+	<link rel="stylesheet" href="modulos/principal/vista/html5/css/estilo.css">
+	<script type="text/javascript" src="modulos/principal/vista/html5/javascript/principal.js"></script>
+{% endblock %}
+
+{% block contenido %}
+
+	<div id="Carousel" class="carousel slide">
+
+        <ol class="carousel-indicators">
+            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#Carousel" data-slide-to="1"></li>
+            <li data-target="#Carousel" data-slide-to="2"></li>
+            <li data-target="#Carousel" data-slide-to="3"></li>
+            <li data-target="#Carousel" data-slide-to="4"></li>
+	    <li data-target="#Carousel" data-slide-to="5"></li>
+        </ol>
+       
+        <div class="carousel-inner">
+            <div class="item">
+                <img src="recursos/imgPropias/fotos/foto.jpg" >
+                <div class="carousel-caption">
+                     <h1>INTERFAZ SENCILLA, AMABLE E INTUITIVA</h1>
+                      <img class="dentro" src="recursos/imgPropias/fotos/sistema.jpg" >
+                      <h2>Diseñada para cumplir todos los requerimientos de la manera más óptima posible.</h2>
+                </div>
+            </div>
+            <div class="item">
+                <img src="recursos/imgPropias/fotos/foto.jpg" >
+                <div class="carousel-caption">
+                    <h1>COMUNICACIÓN CONSTANTE CON EL USUARIO.</h1>
+                    <img class="dentro" src="recursos/imgPropias/fotos/sistema2.jpg" >
+                    <h2>Informa sobre todos los procesos para que no haya duda de las operaciones que realizó.</h2>
+                </div>
+            </div>
+            <div class="item active">
+                 <img src="recursos/imgPropias/fotos/foto.jpg" >
+                <div class="carousel-caption">
+                    <h1>ESTILO ONE-PAGE.</h1>
+                    <img class="dentro" src="recursos/imgPropias/fotos/sistema3.jpg" >
+                    <h2>Que hace amena la navegación, ya que usted no va a tener que abandonar una pantalla para poder hacer todo lo que a ella refiere.</h2>
+                </div>
+            </div>
+            <div class="item">
+                <img src="recursos/imgPropias/fotos/foto.jpg" >
+                <div class="carousel-caption">
+                     <h1>MENÚS INTERACTIVOS.</h1>
+                    <img class="dentro" src="recursos/imgPropias/fotos/sistema4.jpg" >
+                    <h2>Facilita su experiencia, ya que todo lo que necesita siempre lo tendrá a la mano.</h2>
+                </div>
+            </div>
+            <div class="item">
+                <img src="recursos/imgPropias/fotos/foto.jpg" >
+                <div class="carousel-caption">
+                     <h1>DESARROLLADO CON LAS MÁS ACTUALIZADAS HERRAMIENTAS DE PROGRAMACIÓN</h1>
+                     <img class="dentro" src="recursos/imgPropias/fotos/sistema5.jpg" >
+                     <h2>Que garantiza el mejor funcionamiento, fluidez y diseño óptimo de estructura.</h2>
+                </div>
+            </div>
+	   <div class="item">
+                <img src="recursos/imgPropias/fotos/foto.jpg" >
+                <div class="carousel-caption">
+                     <h1>DISEÑO ADAPTABLE</h1>
+                     <img class="dentro" src="recursos/imgPropias/fotos/sistema6.png" >
+                     <h2>Con las últimas tecnologías que garantizan la utilización en cualquier dispositivo. Sea cual sea su resolución.</h2>
+                </div>
+            </div>
+        </div>
+
+        <a class="left carousel-control" href="#Carousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#Carousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+{% endblock %}
+
+{% block desarrolladores %}
+	<div id="footer">	
+		<div id="f" class="smoothScroll" style="bottom:0px">
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn" id="btnD"><span class="glyphicon glyphicon-chevron-up"></span></button>
+			</div>
+		</div>
+			<div class="row" id="desarrolladores">
+				<div class="col-md-5">
+					<h1>DESARROLLADORES:</h1>
+					
+				</div>
+				<div class="col-md-3">
+					<h4>Jhonny Vielma</h4>
+					<h4>Juan De Sousa</h4>
+					<h4>Geraldine Castillo</h4>
+					<h4>Hector Zea</h4>
+					<h4>Leonardo Camacaro</h4>
+				</div>
+				<div class="col-md-4">
+					<h1>Tutor:</h1>
+					<h4>Johan Álamo</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

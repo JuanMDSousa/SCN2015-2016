@@ -1,0 +1,18 @@
+{% extends 'Persona.html.twig' %}
+
+{% block contenido2 %}
+<br>
+<br>
+<div class="col-md-6">
+		<form name="formpersona" method="POST" action="index.php?m_modulo=persona&m_accion=buscarPersonaCedula&m_formato=html5&m_vista=Listar" onsubmit="">
+
+			<div class="form-group">	
+				<label>Cedula</label>	
+				<input type="text" class="form-control cedula" placeholder="Cedula" maxlength="8" name="cedula"> 
+			</div>
+
+			<button type="submit" class="btn btn-default">Buscar</button>
+
+	</form>
+</div>
+{% endblock %}

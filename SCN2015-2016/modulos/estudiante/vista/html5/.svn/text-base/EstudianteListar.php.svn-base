@@ -1,0 +1,144 @@
+<?php
+/*
+ * * * * * * * * * * LICENCIA * * * * * * * * * * * * * * * * * * * * *
+
+Copyright(C) 2012
+Instituto Universtiario de Tecnología Dr. Federico Rivero Palacio
+
+Este programa es Software Libre y usted puede redistribuirlo y/o modificarlo
+bajo los términos de la versión 3.0 de la Licencia Pública General (GPLv3)
+publicada por la Free Software Foundation (FSF), es distribuido sin ninguna
+garantía. Usted debe haber recibido una copia de la GPLv3 junto con este
+programa, sino, puede encontrarlo en la página web de la FSF, 
+específicamente en la dirección http://www.gnu.org/licenses/gpl-3.0.html
+
+ * * * * * * * * * * ARCHIVO * * * * * * * * * * * * * * * * * * * * *
+
+Nombre: InstitutoListar.php
+Diseñador: Johan Alamo (johan.alamo@gmail.com)
+Programador: Johan Alamo
+Fecha: Agosto de 2012
+Descripción:  
+	Es la vista utilizada para mostrar una lista de institutos desde un
+	computador, debe ser llamada desde un objeto VistaComputador, para 
+	que de esta forma se pueda acceder a la información agregada a esta
+	vista en el objeto InstitutoControlador.
+	
+	La información que se espera tener es la siguiente:
+	  institutos: arreglo con la lista de institutos según el patrón de
+				búsqueda aplicado, o la lista de todos los institutos si 
+				es primera vez que entra a la vista
+				* 
+ * * * * * * * * Cambios/Mejoras/Correcciones/Revisiones * * * * * * * *
+Diseñador - Programador /   Fecha   / Descripción del cambio
+---                         ----      ---------
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+//se extrae la información dela vista para un manejo simplificado
+	
+	$estudiantes = $this->obtenerDato('estudiantes');
+	$patron = $this->obtenerDato("patron");
+	
+	
+	?>
+	<form id="frmestudiante" method="post">
+	<h2>Lista de Estudiantes</h2>
+	<section class="submenu">
+			Buscar: 
+			<input type="text" name="patron" id="patronbusqueda" value="<?php echo $patron; ?>" /> &nbsp; 
+			<a href=
+			'javascript:enviarForm("frmestudiante","estudiante","listar","html5","EstudianteListar");'
+			>Buscar</a>
+			&nbsp; | &nbsp; 
+			<a href=
+			'javascript:enviarForm("frmestudiante","estudiante","listar","pdf","EstudianteListar");'
+			>Guardar en PDF</a>
+			&nbsp; | &nbsp; 
+			<a href=
+			'javascript:enviarForm("frmestudiante","estudiante","listar","odt","EstudianteListar");'
+			>Guardar en ODT</a>
+			&nbsp; | &nbsp; 
+			<a href=
+			'javascript:enviarForm("frmestudiante","estudiante","listar","txt","EstudianteListar");'
+			>Guardar en TXT</a>
+			&nbsp; | &nbsp; 
+			<a href=
+			'javascript:enviarForm("frmestudiante","estudiante","listar","json","EstudianteListar");'
+			>Mostrar en JSON</a>
+			&nbsp; | &nbsp; 
+			<a href=
+			'javascript:enviar("estudiante","preagregar","html5","EstudianteAgregarModificar","");'
+			>Agregar nuevo</a>
+			
+			
+			
+			</section>	
+			
+			<div class="paginacion"> 
+			<div class='navegacion'>
+				<ul>
+					<li><a class='pagina-anterior'>&lt;</a></li>
+					<li><a class='pagina-actual'><strong>0</strong> de <span>x</span></a></li>
+					<li><a class='paging-siguiente'>&gt;</a></li>
+				</ul>
+			</div>	
+            <?php
+            
+          
+                if ($estudiantes != false ) {		
+                    echo "<table id='f' class='tablaPaginacion'>
+							  <thead>
+								<tr>
+								  <th>Nombre</th>
+								  <th>Apellido</th>
+								  <th>Cedula</th>
+								</tr>
+							  </thead><tbody>";		
+                    
+                    foreach ($estudiantes as $estudiante) {
+                        echo "<tr style='text-align:center;'>";
+                        echo "<td>"
+                            . $estudiante->obtenerNombre1()
+                            ."</td>";		
+                        echo "<td>"
+                            . $estudiante->obtenerApellido1()
+                            ."</td>";
+                        echo "<td>"
+                            . $estudiante->obtenerCedula()
+                            ."</td>"; 
+                        echo "<td>";
+                        ?>
+                            <a href='javascript:enviar("estudiante","mostrar","html5","EstudianteMostrar",Array("codigo","<?php echo $estudiante->obtenerCodigo(); ?>"))'>
+                            <img src='base/imagenes/icono_lupa.gif' alt='Ver' class='icono_pequenio' />
+                            </a>&nbsp;
+                             </td>
+							
+							<td> 
+                            <a href='javascript:enviar("estudiante","premodificar","html5","EstudianteAgregarModificar",Array("codigo","<?php echo $estudiante->obtenerCodigo(); ?>"))'>
+                            <img src='base/imagenes/icono_lapiz.gif' alt='Modificar' class='icono_pequenio'/>
+                            </a>&nbsp;
+                            </td>
+                        
+                        
+							<td>
+                            <a href='javascript:estudianteEliminar("<?php echo $estudiante->obtenerCodigo(); ?>","<?php echo $estudiante->obtenerNombreCompleto();?>")'>
+                            <img src='base/imagenes/icono_equis.gif' alt='Eliminar' class='icono_pequenio'/>
+                            </a> &nbsp;
+                            </td>
+                        <?php
+                        echo "</tr>";
+						}
+						echo "</tbody></table>						
+						</div>";		
+                    }			
+                    
+                else
+                
+                    echo "<p class='mensaje'>No se encontraron coincidencias</p>";
+            ?>       
+        </form>
+    </div>
+</div>
+

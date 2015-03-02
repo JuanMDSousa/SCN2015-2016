@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/867/trunk/test/Twig/Tests/Fixtures/tags/macro
+END
+global.test
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/867/trunk/test/Twig/Tests/Fixtures/tags/macro/global.test
+END
+special_chars.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/634/trunk/test/Twig/Tests/Fixtures/tags/macro/special_chars.test
+END
+basic.test
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/347/trunk/test/Twig/Tests/Fixtures/tags/macro/basic.test
+END
+external.test
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/macro/external.test
+END
+from.test
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/486/trunk/test/Twig/Tests/Fixtures/tags/macro/from.test
+END
+self_import.test
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/347/trunk/test/Twig/Tests/Fixtures/tags/macro/self_import.test
+END
+endmacro_name.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/543/trunk/test/Twig/Tests/Fixtures/tags/macro/endmacro_name.test
+END

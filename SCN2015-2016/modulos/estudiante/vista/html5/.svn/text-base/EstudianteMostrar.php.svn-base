@@ -1,0 +1,178 @@
+<?php
+/*
+ * * * * * * * * * * LICENCIA * * * * * * * * * * * * * * * * * * * * *
+
+Copyright(C) 2012
+Instituto Universtiario de Tecnología Dr. Federico Rivero Palacio
+
+Este programa es Software Libre y usted puede redistribuirlo y/o modificarlo
+bajo los términos de la versión 3.0 de la Licencia Pública General (GPLv3)
+publicada por la Free Software Foundation (FSF), es distribuido sin ninguna
+garantía. Usted debe haber recibido una copia de la GPLv3 junto con este
+programa, sino, puede encontrarlo en la página web de la FSF, 
+específicamente en la dirección http://www.gnu.org/licenses/gpl-3.0.html
+
+ * * * * * * * * * * ARCHIVO * * * * * * * * * * * * * * * * * * * * *
+
+Nombre: InstitutoMostrar.php
+Diseñador: 
+Programador: 
+Fecha: Agosto de 2012
+Descripción:  
+	Es la vista utilizada para mostrar la información de un instituto en
+	particular desde un computador, debe ser llamada desde un objeto
+	VistaComputador, para que de esta forma se pueda acceder a la información
+	agregada a esta	vista en el objeto InstitutoControlador.
+	
+	La información que se espera tener es la siguiente:
+	  institutos: arreglo con el único objeto Instituto a mostrar
+	 
+	  
+ * * * * * * * * Cambios/Mejoras/Correcciones/Revisiones * * * * * * * *
+Diseñador - Programador /   Fecha   / Descripción del cambio
+---                         ----      ---------
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+//extracción del instituto para un manejo simplificado
+	$estudiante = $this->obtenerDato('estudiante');
+	//$fotografia = $this->obtenerInformacion('fotografia');
+	$exito = $this->obtenerDato('exito');
+	$mensaje = $this->obtenerDato('mensaje');
+			
+	if ($exito) {
+?>
+<div class="contenido">
+	<div class="cont">	
+		<form name="frmestudiante" method="POST">
+		<input type="hidden" name="modulo" />
+		<input type="hidden" name="accion" />
+		<input type="hidden" name="submodulo" />
+		<input type="hidden" name="subaccion" />
+		<input type="hidden" name="tipoVista" />
+		<input type="hidden" name="codigo" />
+		
+		
+		<h1>Informaci&oacute;n del estudiante</h1>		
+		
+		<p class="menucentro">
+			<a href='javascript:enviar("estudiante","listar","html5","EstudianteListar","")'>Ver Todos</a> 
+			&nbsp; &nbsp; | &nbsp;&nbsp;
+			<a href='javascript:enviar("estudiante","preagregar","html5","EstudianteAgregarModificar","")'>Agregar nuevo</a> 
+			&nbsp; &nbsp; | &nbsp;&nbsp;
+			<a href='javascript:enviar("estudiante","premodificar","html5","EstudianteAgregarModificar",Array("codigo","<?php echo $estudiante->obtenerCodigo();?>"))'>Modificar</a>
+			
+		</p>
+		
+		<table id="formulario">
+			<tr>
+				<td>
+					<a class="zoom">
+							<?php if (FotografiaServicio::obtenerFotografiaPorCodigo($estudiante->obtenerCodigo())){ ?>
+							<img src='tmp/<? echo $estudiante->obtenerCodigo(); ?>.jpg' width="150px" height="200px" border="0" />
+							<span><?php echo $estudiante->obtenerNombreCompleto(2); ?><img src='tmp/<? echo $estudiante->obtenerCodigo(); ?>.jpg' width="150px" height="200px" border="0" />		</span>
+							<?php }else{ ?>
+							<img src='base/imagenes/Defecto.jpg' width="150px" height="200px" border="0" />
+							<span><?php echo $estudiante->obtenerNombreCompleto(2); ?><img src='base/imagenes/Defecto.jpg' width="150px" height="200px" border="0" />		</span>
+							<?php } ?>
+						
+					</a>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>Estado:</td>
+				<td>
+					<?php echo $estudiante->obtenerEstado(); ?>
+				</td>				
+			</tr>
+			<tr>
+				<td>Nombre:</td>
+				<td>
+					<?php echo $estudiante->obtenerNombre1(); ?>
+				</td>
+				<td>Segundo Nombre:</td>
+				<td>
+					<?php echo $estudiante->obtenerNombre2(); ?>
+			    </td>				
+			</tr>
+			<tr>
+				<td>Apellido:</td>
+				<td>
+					<?php echo $estudiante->obtenerApellido1(); ?>
+				</td>	
+				<td> Segundo Apellido: </td>
+				<td>
+					<?php echo $estudiante->obtenerApellido2(); ?>
+				</td>				
+			</tr>
+			<tr>
+				<td> Sexo: </td>
+				<td>
+					<?php echo $estudiante->obtenerSexo(); ?>
+				</td>
+				<td> Fecha de Nacimiento: </td>
+				<td>
+					<?php echo $estudiante->obtenerFecNacimiento(); ?>
+				</td>	
+			</tr>
+			<tr>
+				<td> Cedula: </td>
+				<td>
+					<?php echo $estudiante->obtenerCedula(); ?>
+				</td>
+				<td> Tipo de Sangre: </td>
+				<td>
+					<?php echo $estudiante->obtenerTipSangre(); ?>
+				 </td>
+			</tr>
+			<tr>
+				<td>Telefono movil: </td>
+				<td>
+					<?php echo $estudiante->obtenerTelefono1();?>
+				</td>
+				<td>Telefono local: </td>
+				<td>
+					<?php echo $estudiante->obtenerTelefono2();?>
+				</td>						
+			</tr>
+			<tr>
+				<td> Direccion: </td>
+				<td>
+					<?php echo $estudiante->obtenerDireccion(); ?>
+				</td>
+				 <td> Correo Personal: </td>
+				<td>
+					<?php echo $estudiante->obtenerCorreoPersonal(); ?>
+				</td>
+			</tr>
+			<tr>
+				<td> Codigo Rusnies: </td>
+				<td>
+					<?php echo $estudiante->obtenerCodRusnies(); ?>
+				</td>
+				<td> Numero de Expediente: </td>
+				<td>
+					<?php echo $estudiante->obtenerNumExpediente(); ?>
+				</td>
+			</tr>
+			<tr>
+				<td> Numero de Carnet: </td>
+				<td>
+					<?php echo $estudiante->obtenerNumCarnet(); ?>
+			   </td>				
+				<td> Correo Institucional: </td>
+				<td>
+					<?php echo $estudiante->obtenerCorreoInstitucional(); ?>
+				</td>
+			</tr>
+		</table>
+				
+		</form>
+		<?php
+			}else 
+				echo $mensaje;
+		?>
+    </div>
+</div>

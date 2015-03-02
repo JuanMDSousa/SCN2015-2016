@@ -1,0 +1,138 @@
+<?php
+/**
+ * * * * * * * * * * LICENCIA * * * * * * * * * * * * * * * * * * * * *
+
+Copyright(C) 2012
+Instituto Universtiario de Tecnología Dr. Federico Rivero Palacio
+
+Este programa es Software Libre y usted puede redistribuirlo y/o modificarlo
+bajo los términos de la versión 3.0 de la Licencia Pública General (GPLv3)
+publicada por la Free Software Foundation (FSF), es distribuido sin ninguna
+garantía. Usted debe haber recibido una copia de la GPLv3 junto con este
+programa, sino, puede encontrarlo en la página web de la FSF, 
+específicamente en la dirección http://www.gnu.org/licenses/gpl-3.0.html
+
+ * * * * * * * * * * ARCHIVO * * * * * * * * * * * * * * * * * * * * *
+
+Nombre: LoginControlador.clase.php
+Diseñador: johan Alamo
+Programador: Geraldine Castillo (geitha_19@hotmail.com)
+Fecha: Febrero 2013
+Descripción:  
+	Este es el controlador del módulo Login, permite manejar las operaciones relacionadas 
+	con los datos del logueo (iniciar , mostrar , cerrar), es el intermediario entre la
+	base de datos y la vista. 
+
+ * * * * * * * * Cambios/Mejoras/Correcciones/Revisiones * * * * * * * *
+Diseñador - Programador /   Fecha   / Descripción del cambio
+---                         ----      ---------
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+/*Objeto Instituto*/
+/* Clase que permite la comunicación con la base de datos*/
+require_once "modulos/login/modelo/LoginServicio.php";
+
+class LoginControlador {
+	
+	
+		/*Método que permite manejar el requerimiento (o acción) indicado por
+	 * el usuario según su petición
+	 * Acciones:
+		mostrar: muestra toda la información de un logeo		
+		Cada acción será redireccionada a un método que la procesa para 
+		mayor orden
+		
+		Resumen de acciones:
+		Mostrar: esta acción mostrará la pantalla de logueo.
+		Iniciar: esta acción permite iniciar el logueo de un usuario.
+		Cerrar: esta acción permite cerrar la sesión iniciada. 	
+	 */
+	public static function manejarRequerimiento(){
+		
+		$accion = PostGet::obtenerPostGet('m_accion');
+		//permite colocar una acción predefinida en caso de no colocarla
+		if (!$accion)
+			$accion = 'mostrar';
+				
+		if($accion == 'mostrar'){
+			self::mostrarLogin();		
+		}elseif($accion == 'iniciar'){
+			self::iniciarLogin();	
+		}elseif($accion == 'cerrar'){
+			self::cerrarLogin();
+		}			
+		else
+			echo "Acci&oacute;n no v&aacute;lida en el m&oacute;dulo Login: $accion";	
+	}
+	
+/************************************************************************************************************/
+
+	/* método público  que permite extraer en un objeto tipo Login toda la información de un usuario (Usuario, 
+	 * apellido,tipo,codigo ) de la base de datos . Recibe los datos desde la vista (arreglo PostGet). 	De ser
+	 * satisfactoria la autenticación los datos del usuario se guardarán en la variable de session  a través de
+	 * la clase que contiene solo métodos estáticos Sesion ejemplo: Sesion::asignarNombre(nombre del usuario). 
+	 * En caso de error se llamará a la función estática mostrarLogin la cual enviará a la pantalla de logueo.
+	*/
+	
+	public static function iniciarLogin(){	
+		$usuario      = PostGet::obtenerPostGet('usuario');
+		$password     = PostGet::obtenerPostGet('pass');
+		$tipoU        = PostGet::obtenerPostGet('tipoU');
+		$login=null;
+		if ($tipoU=="A"){
+			$login= new Login('administrador','SCN','A',1000,'usuarioscn');
+		}
+		else if($tipoU=="JC"){
+			$instituto    = PostGet::obtenerPostGet('codInstituto');
+			$departamento=null;
+			$login=LoginServicio::obtenerLogin($usuario,$tipoU,$departamento,$instituto);
+		}else if (($tipoU=="JD")||($tipoU=="E") ||($tipoU=="D")){
+			$departamento = PostGet::obtenerPostGet('codDepartamento');
+			$periodo      = PostGet::obtenerPostGet('codPeriodo');
+			$instituto    = PostGet::obtenerPostGet('codInstituto');
+			$login=LoginServicio::obtenerLogin($usuario,$tipoU,$departamento,$instituto);
+		}
+		if ($login!=null){
+			Conexion::iniciar("10.10.10.10","bd_scnfinal","5432",$usuario,$password);
+			conexion::conectar();
+			Vista::asignarDato("mensaje", "Bienvenido, ".$login->obtenerNombre()." ".$login->obtenerApellido());
+			$permisos=new Permisos();
+			$permisos::iniciar();
+			$permisos::asignarPermisoAdministrador();
+			$login->asignarPass($password);
+			Sesion::iniciar($login,$permisos);
+			Vista::asignarDato("login",$login);
+			Vista::asignarDato("permisos",$permisos);
+
+		}else
+			Vista::asignarDato("mensaje", "Datos de autenficiación incorrectos");
+		Vista::mostrar();
+
+	}
+
+/***************************************************************************************/
+		
+	/* Método público que permite mostrar la vista 	mediante la cual se pedirán los datos 
+	 * de autenticación de usuario.
+	 * */
+	 
+	public static function mostrarLogin(){					
+		Vista::mostrar();				
+	}
+	
+/************************************************************************************************/	
+
+	/* Método público que permite cerrar una sesion; lo hace a 	través de la clase Sesion ejemplo 
+	 * Sesion::cerrarSesion(). Luego de cerrar la sesión redireccionará al index de la aplicación. 
+	*/
+	
+	public static function cerrarLogin(){
+		Sesion::cerrarSesion();
+		Vista::asignarDato("mensaje","Sesión cerrada, hasta pronto.");
+		Vista::mostrar();
+	}
+}
+?>
+

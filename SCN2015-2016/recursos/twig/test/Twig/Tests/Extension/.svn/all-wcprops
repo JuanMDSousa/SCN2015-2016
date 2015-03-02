@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/875/trunk/test/Twig/Tests/Extension
+END
+CoreTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/875/trunk/test/Twig/Tests/Extension/CoreTest.php
+END
+SandboxTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/848/trunk/test/Twig/Tests/Extension/SandboxTest.php
+END

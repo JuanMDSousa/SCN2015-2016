@@ -1,0 +1,146 @@
+<html>
+<head>
+  <script type="text/javascript" src="bootstrap/js/jquery.js"></script> 
+  <script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+
+
+   <link href="bootstrap/css/datepicker.css" rel="stylesheet">
+   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+
+  <script type="text/javascript" src="funciones.js"></script>
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>  
+  <link href="stylesheet.css" rel="stylesheet" media="screen"/>	
+
+   <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#fecha').datepicker({
+                    format: "yyyy-mm-dd"
+                });  
+            
+            });
+        </script>
+ 
+ 
+  
+</head>
+<body>
+
+<div align="center"> FORMULARIO PERSONA </div>
+
+
+<div class="container cuadro">
+	<form name="formpersona" method="POST" action="hola.php" onsubmit="">
+
+	
+
+
+
+			<div class="form-group">	
+				<label>Cedula</label>	
+				<input type="text" class="form-control cedula" placeholder="Cedula" maxlength="8" name="cedula"> 
+			</div>
+
+			<div class="form-group">	
+				<label>Rif</label>	
+				<input type="text" class="form-control cedula" placeholder="Rif" maxlength="8" name="rif"> 
+			</div>
+
+			<div class="form-group">
+				<label>Primer Nombre</label>	
+				<input type="text" class="form-control" placeholder="Primer Nombre" name="nombre1">
+			</div>
+
+			<div class="form-group">
+				<label>Segundo Nombre</label>	
+				<input type="text" class="form-control" placeholder="Segundo Nombre" name="nombre2">
+			</div>
+
+			<div class="form-group">
+				<label>Primer Apellido</label>	
+				<input type="text" class="form-control" placeholder="Primer Apellido" name="apellido1">
+			</div>
+
+			<div class="form-group">
+				<label>Segundo Apellido</label>	
+				<input type="text" class="form-control" placeholder="Segundo Apellido" name="apellido2">
+			</div>
+
+			<div class="form-group">
+				<label> Sexo </label> <br>
+
+				<label class="radio-inline">
+				  	<input type="radio" name="sexo" id="masculino" value="option1"> Masculino
+				</label>
+
+				<label class="radio-inline">
+				  	<input type="radio" name="sexo" id="femenino" value="option2"> Femenino
+				</label>
+			</div>
+
+			<div class="form-inline">
+					<label>Fecha de Nacimiento</label>  
+					<input type="text" class="form-control" placeholder="yyyy-mm-dd" id="fecha" name="fec_nacimiento">
+				  	
+					<label>Tipo de Sangre</label>
+				 	 <select name="tip_sangre" class="form-control">
+					 	 <option>AB+</option>
+						  <option>AB-</option>
+						  <option>A+</option>
+						  <option>A-</option>
+						  <option>B+</option>
+						  <option>B-</option>
+						  <option>O+</option>
+						  <option>O-</option>
+					</select>
+			</div> <br><br>
+
+
+
+			<div class="form-inline"> 
+				<label>Primer Telefono</label>
+				<input class="form-control" type="text" name="telefono" placeholder="Telefono" id="telf" onkeypress="validar_numeros()" maxlength="7">
+				<label>Segundo Telefono</label>
+				<input class="form-control" type="text" name="telefono2" placeholder="Telefono" id="telf"  maxlength="7">	
+
+			</div><br>
+
+
+			<div class="form-group">
+				<label>Email</label>	
+				<input type="email" class="form-control" placeholder="hola@hotmail.com">
+			</div>
+
+
+
+			
+
+			<div class="form-group">
+				<label>Email Auxiliar</label>	
+				<input type="email" class="form-control" placeholder="holaux@hotmail.com">
+			</div>
+
+
+
+
+			<div class="form-group">
+				<label>Direccion</label>	
+				<input type="email" class="form-control" placeholder="residencias paraiso sector la urbina, apto20">
+			</div>
+
+			<button type="submit" class="btn btn-default">Enviar Datos</button>
+
+
+
+
+
+	</form>
+</div>
+
+
+
+
+</body>
+</html>

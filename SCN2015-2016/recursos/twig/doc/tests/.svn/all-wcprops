@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/!svn/ver/885/trunk/doc/tests
+END
+divisibleby.rst
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/665/trunk/doc/tests/divisibleby.rst
+END
+odd.rst
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/!svn/ver/665/trunk/doc/tests/odd.rst
+END
+index.rst
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/882/trunk/doc/tests/index.rst
+END
+iterable.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/885/trunk/doc/tests/iterable.rst
+END
+constant.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/665/trunk/doc/tests/constant.rst
+END
+sameas.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/665/trunk/doc/tests/sameas.rst
+END
+null.rst
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/699/trunk/doc/tests/null.rst
+END
+even.rst
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/665/trunk/doc/tests/even.rst
+END
+defined.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/702/trunk/doc/tests/defined.rst
+END
+empty.rst
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/665/trunk/doc/tests/empty.rst
+END

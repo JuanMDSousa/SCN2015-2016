@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/654/trunk/test/Twig/Tests/Fixtures/exceptions
+END
+unclosed_tag.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/654/trunk/test/Twig/Tests/Fixtures/exceptions/unclosed_tag.test
+END

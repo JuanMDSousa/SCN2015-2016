@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/693/trunk/test/Twig/Tests/Fixtures/tags/filter
+END
+json_encode.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/539/trunk/test/Twig/Tests/Fixtures/tags/filter/json_encode.test
+END
+multiple.test
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/filter/multiple.test
+END
+with_for_tag.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/filter/with_for_tag.test
+END
+basic.test
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/filter/basic.test
+END
+nested.test
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/filter/nested.test
+END
+with_if_tag.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/693/trunk/test/Twig/Tests/Fixtures/tags/filter/with_if_tag.test
+END

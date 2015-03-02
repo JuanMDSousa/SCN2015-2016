@@ -1,0 +1,95 @@
+{% extends 'Instituto.html.twig' %}
+{% block contenido %}
+
+	<div id="headerwrap">
+		<div class="container">
+			<div class="row-fluid">
+				<input  id ="codPeriodo" type="hidden" name="codPerido" value="101">
+				<div class="col-lg-12">
+					<br>
+					<br>
+					<h2> Lista de Institutos</h2>
+					
+					
+					<div class="row-fluid">
+						<div class="col-md-6">
+						</div>
+						<div class="col-md-6">
+							{% if (permisos.obtenerPermiso('instituto','insert')) %}
+								<button type="button" onClick="abrirDialogoInstituto('dialogoInstituto','Agregar Instituto','agregarInstituto()')" class="btn btn-success" data-toggle="modal" data-target="#dialogoInstituto">
+								Agregar Instituto
+								</button>
+							{% endif %}
+						</div>
+					</div>
+
+					<br>
+					<br>
+					
+					<br>
+
+					<div id='listarI'>
+						<table class="table" id='tTabla'> 
+							{% if (institutos == null) %}
+								No hay Institutos
+							{% endif %}
+							{% set num = 1 %}
+					    	{% for instituto in institutos %}
+
+					    	{% if (num==1) %}
+
+		
+
+							    <tr class="titulo">
+							             <td>Nombre Instituto</td>
+							            <td>Nombre Corto</td>
+							            <td>Direccion</td>
+							            <td></td>
+							            <td></td>
+							    </tr>
+
+					    	{% endif %}		    
+					    
+						<tr>
+							<td style="text-align:left;">
+								{{instituto.nombre}}   
+							</td>
+							<td> 
+								{{instituto.nom_corto}}    
+							</td>
+							
+							<td> 
+							{% if instituto.direccion != null %}						
+								{{instituto.direccion}}
+							{% else %}
+								No asignada
+							{% endif %}
+							</td>
+							<td>
+							{% if (permisos.obtenerPermiso('instituto','update')) %}
+							<button type="button" class="btn btn-primary" onClick="modificarInstituto({{instituto.codigo}})" data-toggle="modal" data-target="#dialogoInstituto" title="Modificar Instituto">
+										<i class="icon-pencil"></i>
+								</button>
+							{% endif %}
+
+							</td>
+							<td>
+{% if (permisos.obtenerPermiso('instituto','delete')) %}
+							<button type="button" class="btn btn-danger" onClick="eliminarInstituto({{instituto.codigo}})" data-toggle="modal" data-target="#dialogoInstituto" title="Eliminar Instituto">
+										<i class="icon-trash"></i>
+								</button>
+{% endif %}
+							</td>
+						</tr>	
+							{% set num = 2	 %}
+							{% endfor %}
+							
+					</table>
+				
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>		
+{% endblock %}

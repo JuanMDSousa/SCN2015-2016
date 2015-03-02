@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/!svn/ver/891/trunk/ext/twig
+END
+twig.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/852/trunk/ext/twig/twig.c
+END
+config.w32
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/727/trunk/ext/twig/config.w32
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/724/trunk/ext/twig/LICENSE
+END
+config.m4
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/!svn/ver/724/trunk/ext/twig/config.m4
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/724/trunk/ext/twig/.gitignore
+END
+php_twig.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/891/trunk/ext/twig/php_twig.h
+END

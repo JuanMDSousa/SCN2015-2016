@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/880/trunk/test/Twig/Tests/Fixtures/tags/inheritance
+END
+parent_nested.test
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/497/trunk/test/Twig/Tests/Fixtures/tags/inheritance/parent_nested.test
+END
+nested_inheritance.test
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/!svn/ver/350/trunk/test/Twig/Tests/Fixtures/tags/inheritance/nested_inheritance.test
+END
+multiple.test
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/497/trunk/test/Twig/Tests/Fixtures/tags/inheritance/multiple.test
+END
+extends_as_array.test
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/644/trunk/test/Twig/Tests/Fixtures/tags/inheritance/extends_as_array.test
+END
+use.test
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/657/trunk/test/Twig/Tests/Fixtures/tags/inheritance/use.test
+END
+parent_change.test
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/618/trunk/test/Twig/Tests/Fixtures/tags/inheritance/parent_change.test
+END
+empty.test
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/867/trunk/test/Twig/Tests/Fixtures/tags/inheritance/empty.test
+END
+template_instance.test
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/!svn/ver/497/trunk/test/Twig/Tests/Fixtures/tags/inheritance/template_instance.test
+END
+conditional.test
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/497/trunk/test/Twig/Tests/Fixtures/tags/inheritance/conditional.test
+END
+parent_without_extends_but_traits.test
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/!svn/ver/657/trunk/test/Twig/Tests/Fixtures/tags/inheritance/parent_without_extends_but_traits.test
+END
+parent_without_extends.test
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/657/trunk/test/Twig/Tests/Fixtures/tags/inheritance/parent_without_extends.test
+END
+parent_isolation.test
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/350/trunk/test/Twig/Tests/Fixtures/tags/inheritance/parent_isolation.test
+END
+nested_blocks.test
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/!svn/ver/880/trunk/test/Twig/Tests/Fixtures/tags/inheritance/nested_blocks.test
+END
+basic.test
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/inheritance/basic.test
+END
+dynamic.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/inheritance/dynamic.test
+END
+parent_in_a_block.test
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/!svn/ver/630/trunk/test/Twig/Tests/Fixtures/tags/inheritance/parent_in_a_block.test
+END
+parent.test
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/!svn/ver/497/trunk/test/Twig/Tests/Fixtures/tags/inheritance/parent.test
+END
+nested_blocks_parent_only.test
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/!svn/ver/880/trunk/test/Twig/Tests/Fixtures/tags/inheritance/nested_blocks_parent_only.test
+END

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/!svn/ver/839/trunk/doc/functions
+END
+attribute.rst
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/665/trunk/doc/functions/attribute.rst
+END
+dump.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/756/trunk/doc/functions/dump.rst
+END
+index.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/790/trunk/doc/functions/index.rst
+END
+constant.rst
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/688/trunk/doc/functions/constant.rst
+END
+parent.rst
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/665/trunk/doc/functions/parent.rst
+END
+block.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/689/trunk/doc/functions/block.rst
+END
+range.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/665/trunk/doc/functions/range.rst
+END
+date.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/839/trunk/doc/functions/date.rst
+END
+cycle.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/665/trunk/doc/functions/cycle.rst
+END
+random.rst
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/818/trunk/doc/functions/random.rst
+END

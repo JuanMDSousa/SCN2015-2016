@@ -1,0 +1,204 @@
+/*
+ * * * * * * * * * * LICENCIA * * * * * * * * * * * * * * * * * * * * *
+
+Copyright(C) 2012
+docente Universtiario de Tecnología Dr. Federico Rivero Palacio
+
+Este programa es Software Libre y usted puede redistribuirlo y/o modificarlo
+bajo los términos de la versión 3.0 de la Licencia Pública General (GPLv3)
+publicada por la Free Software Foundation (FSF), es distribuido sin ninguna
+garantía. Usted debe haber recibido una copia de la GPLv3 junto con este
+programa, sino, puede encontrarlo en la página web de la FSF, 
+específicamente en la dirección http://www.gnu.org/licenses/gpl-3.0.html
+
+ * * * * * * * * * * ARCHIVO * * * * * * * * * * * * * * * * * * * * *
+
+Nombre: estudiante.js
+Diseñador: ---
+Programador: ---
+Fecha: Agosto de 2012
+Descripción:  
+	Este archivo contiene los códigos javascript necesarios y particulares
+	del módulo docente, debe ser incluido en todas las vistas de este
+	módulo. Contiene básicamente validaciones y configuraciones iniciales
+	para llevar a cabo las acciones propias de este módulo tales como 
+	agregar, modificar, eliminar, cosultar y listar docentes
+
+ * * * * * * * * Cambios/Mejoras/Correcciones/Revisiones * * * * * * * *
+Diseñador - Programador /   Fecha   / Descripción del cambio
+---                         ----      ---------
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+/* 	Función que permite chequear si la data de un formulario es vÃ¡lida,
+   especÃ­ficamente chequea que el nombre corto ni el nombre no estÃ©n vacÃ­os
+   y que el nombre corto, nombre y direccion no excedan de 20, 100 y 100
+   caracteres respectivamente.
+	Es utilizado principalmente cuando se agrega o modifica un docente
+   Valor de retorno:
+     true: si el formulario esta correctamente lleno
+     false: en caso de no tener el formato correcto
+*/
+function esFormularioValido(){
+	var valido = true;
+	var obligatorio = $('.obligatorio');
+	obligatorio.each(function(index){
+	var elem = $(this);
+	if ((elem.val() == "") || (elem.hasClass('obligatorioVacio'))){		
+		elem.addClass('obligatorioVacio');					
+		valido = false;
+	}
+	else
+		elem.removeClass('obligatorioVacio');
+	});			
+// Si valido == false no se hace la llamada al servidor, se evita el PostBack
+// Si no hay return o valido == true se hace la llamada al servidor
+	return valido;	
+}
+
+/*
+Permite mejorar el formato de los campos llenados por el usuario
+  nombre corto: quita espacios iniciales y finales y lo coloca en mayúscula
+  nombre: quita espacios iniciales y finales
+  direccion: quita espacios iniciales y finales
+*/
+function ajustarCampos(){
+	document.frmestudiante.nombre1.value 	= document.frmestudiante.nombre1.value.trim();
+	document.frmestudiante.nombre2.value 	= document.frmestudiante.nombre2.value.trim();
+	document.frmestudiante.apellido1.value 	= document.frmestudiante.apellido1.value.trim();
+	document.frmestudiante.apellido2.value 	= document.frmestudiante.apellido2.value.trim();
+	document.frmestudiante.fecNacimiento.value 	= document.frmestudiante.fecNacimiento.value.trim();
+	document.frmestudiante.cedula.value 	= document.frmestudiante.cedula.value.trim();
+	document.frmestudiante.telefono1.value 	= document.frmestudiante.telefono1.value.trim();
+	document.frmestudiante.telefono2.value 	= document.frmestudiante.telefono2.value.trim();
+	document.frmestudiante.direccion.value 	= document.frmestudiante.direccion.value.trim();
+	document.frmestudiante.correoPersonal.value 	= document.frmestudiante.correoPersonal.value.trim();
+	document.frmestudiante.codRusnies.value 	= document.frmestudiante.codRusnies.value.trim();
+	document.frmestudiante.numExpediente.value 	= document.frmestudiante.numExpediente.value.trim();
+	document.frmestudiante.noCarnet.value 	= document.frmestudiante.noCarnet.value.trim();
+}
+
+/*Función que permite llenar los campos del formulario según la acción a
+  emprender. 
+    coloca los valores de modulo, accion y tipoVista en 'estudiante', 
+    'premodificar' y 'computador' respectivamente y además configura
+    el código del estudiante que va a ser modificado. Luego esto se envía
+    al servidor
+  Parámetros de entrada:
+    codigo: código del estudiante a ser modificado
+*/
+function estudiantePremodificar(codigo)
+{
+		document.frmestudiante.submodulo.value = 'fotografia';
+		document.frmestudiante.accion.value = 'premodificar';	
+		document.frmestudiante.modulo.value = 'estudiante';
+		document.frmestudiante.accion.value = 'premodificar';	
+		document.frmestudiante.tipoVista.value = 'computador';	
+		document.frmestudiante.codigo.value = codigo;
+		document.frmestudiante.submit();
+}
+
+
+/*Después de hacer las modificaciones al estudiante en la vista correspondiente
+  se procede a enviar esta data al servidor, configurando el módulo, la 
+  acción y el tipo de vista utilizada. También se valida el formulario y 
+  en caso de no tener el formato correcto se da un mensaje al usuario
+*/
+function estudianteModificar()
+{
+	ajustarCampos();
+	if(esFormularioValido()) {
+		document.frmestudiante.modulo.value = 'estudiante';
+		document.frmestudiante.submodulo.value = 'fotografia';
+		document.frmestudiante.accion.value = 'modificar';	
+		document.frmestudiante.subaccion.value = 'modificar';	
+		document.frmestudiante.tipoVista.value = 'computador';	
+		if  ( confirm("¿Está seguro que desea realizar la modificación? \n\n " )  )
+		document.frmestudiante.submit();
+		
+	} else {
+		alert("No se ha podido guardar los datos, verifique lo siguiente:\n"
+							+ "- Los campos obligatorios no pueden estar vacios.\n"
+							+ "- Los campos no pueden tener ningun error.");
+	}
+}
+
+/*Permite configurar el formulario para indicarle al servidor que se debe
+  mostrar la información completa de un estudiante, en este caso el módulo,
+  la acción, el tipo de vista y el código del estudiante a mostrar
+*/
+function estudianteMostrar(codigo)
+{
+	document.frmestudiante.modulo.value = 'estudiante';
+	document.frmestudiante.submodulo.value = 'fotografia';
+	document.frmestudiante.accion.value = 'mostrar';
+	document.frmestudiante.subaccion.value = 'mostrar';
+	document.frmestudiante.tipoVista.value = 'computador';	
+	document.frmestudiante.codigo.value = codigo;
+	document.frmestudiante.submit();
+}
+
+/*Permite configurar el formulario para indicarle al servidor que debe
+  emprender la acción 'eliminar' estudiante. Sin embargo, pide un mensaje
+  de confirmación al usuario antes de ejecutar la acción y luego envía 
+  al servidor
+  Parámetros de entrada:
+    codigo: Código del estudiante a eliminar
+    nombre: nombre del estudiante a eliminar, utilizado principalmente
+           para mostrarle el nombre al usuario al momento de la confirmación
+*/
+
+function estudianteEliminar(codigo, nombre)
+{
+	if  ( confirm("¿Está seguro que desea eliminar el siguiente estudiante?\n\n " 
+	              + nombre
+	              )
+	    )
+			enviar("estudiante","eliminar","html5","EstudianteMensaje",Array("codigo",codigo));
+}
+
+
+
+/*configura los parámetros para listar todos los estudiantes y envía 
+  al servidor
+*/
+
+function estudianteListar()
+{		
+		document.frmestudiante.modulo.value = 'estudiante';
+		document.frmestudiante.accion.value = 'listar';	
+		document.frmestudiante.tipoVista.value = 'computador';	
+		document.frmestudiante.submit();
+}
+
+/*Configura el formulario para ejecutar la acción 'preagregar' y envía 
+  al servidor
+*/
+function estudiantePreagregar()
+{			document.frmestudiante.submodulo.value = 'fotografia';
+		document.frmestudiante.accion.value = 'preagregar';	
+	document.frmestudiante.modulo.value = 'estudiante';
+	document.frmestudiante.accion.value = 'preagregar';	
+	document.frmestudiante.tipoVista.value = 'computador';	
+	document.frmestudiante.submit();	
+}	
+
+/*Configura el formulario para ejecutar la acción 'agregar' y además 
+  envía todos los datos del estudiante a agregar. También valida el 
+  formulario antes de hacer el envío.
+*/
+function estudianteAgregar()
+{
+	ajustarCampos();
+	if(esFormularioValido()){
+		document.frmestudiante.modulo.value = 'estudiante';
+		document.frmestudiante.accion.value = 'agregar';	
+		document.frmestudiante.tipoVista.value = 'computador';	
+		document.frmestudiante.submit();
+	}else{
+		alert("No se ha podido guardar los datos, verifique lo siguiente:\n"
+							+ "- Los campos obligatorios no pueden estar vacios.\n"
+							+ "- Los campos no pueden tener ningun error.");
+	}		
+}	

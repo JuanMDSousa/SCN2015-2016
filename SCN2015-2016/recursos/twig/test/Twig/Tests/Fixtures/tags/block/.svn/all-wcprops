@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/880/trunk/test/Twig/Tests/Fixtures/tags/block
+END
+block_unique_name.test
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/880/trunk/test/Twig/Tests/Fixtures/tags/block/block_unique_name.test
+END
+special_chars.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/634/trunk/test/Twig/Tests/Fixtures/tags/block/special_chars.test
+END
+basic.test
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/block/basic.test
+END

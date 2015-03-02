@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/711/trunk/test/Twig/Tests/Fixtures/tags/for
+END
+inner_variables.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/inner_variables.test
+END
+context.test
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/context.test
+END
+objects_countable.test
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/objects_countable.test
+END
+condition.test
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/711/trunk/test/Twig/Tests/Fixtures/tags/for/condition.test
+END
+loop_context_local.test
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/693/trunk/test/Twig/Tests/Fixtures/tags/for/loop_context_local.test
+END
+recursive.test
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/recursive.test
+END
+else.test
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/693/trunk/test/Twig/Tests/Fixtures/tags/for/else.test
+END
+objects.test
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/objects.test
+END
+nested_else.test
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/nested_else.test
+END
+keys.test
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/keys.test
+END
+keys_and_values.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/keys_and_values.test
+END
+loop_context.test
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/loop_context.test
+END
+values.test
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/tags/for/values.test
+END

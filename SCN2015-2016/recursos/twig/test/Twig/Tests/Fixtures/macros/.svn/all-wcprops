@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/!svn/ver/811/trunk/test/Twig/Tests/Fixtures/macros
+END
+simple.test
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/811/trunk/test/Twig/Tests/Fixtures/macros/simple.test
+END
+with_filters.test
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/737/trunk/test/Twig/Tests/Fixtures/macros/with_filters.test
+END

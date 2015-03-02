@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/605/trunk/lib/Twig/Sandbox
+END
+SecurityError.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/!svn/ver/585/trunk/lib/Twig/Sandbox/SecurityError.php
+END
+SecurityPolicy.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/605/trunk/lib/Twig/Sandbox/SecurityPolicy.php
+END
+SecurityPolicyInterface.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/585/trunk/lib/Twig/Sandbox/SecurityPolicyInterface.php
+END

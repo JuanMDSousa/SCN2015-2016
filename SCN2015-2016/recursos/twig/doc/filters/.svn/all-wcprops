@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/!svn/ver/894/trunk/doc/filters
+END
+length.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/665/trunk/doc/filters/length.rst
+END
+title.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/665/trunk/doc/filters/title.rst
+END
+default.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/702/trunk/doc/filters/default.rst
+END
+capitalize.rst
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/665/trunk/doc/filters/capitalize.rst
+END
+json_encode.rst
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/!svn/ver/690/trunk/doc/filters/json_encode.rst
+END
+convert_encoding.rst
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/843/trunk/doc/filters/convert_encoding.rst
+END
+sort.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/665/trunk/doc/filters/sort.rst
+END
+lower.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/665/trunk/doc/filters/lower.rst
+END
+format.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/665/trunk/doc/filters/format.rst
+END
+raw.rst
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/!svn/ver/665/trunk/doc/filters/raw.rst
+END
+upper.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/665/trunk/doc/filters/upper.rst
+END
+merge.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/801/trunk/doc/filters/merge.rst
+END
+join.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/665/trunk/doc/filters/join.rst
+END
+slice.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/802/trunk/doc/filters/slice.rst
+END
+number_format.rst
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/775/trunk/doc/filters/number_format.rst
+END
+escape.rst
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/894/trunk/doc/filters/escape.rst
+END
+index.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/865/trunk/doc/filters/index.rst
+END
+keys.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/665/trunk/doc/filters/keys.rst
+END
+replace.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/665/trunk/doc/filters/replace.rst
+END
+reverse.rst
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/!svn/ver/802/trunk/doc/filters/reverse.rst
+END
+trim.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/853/trunk/doc/filters/trim.rst
+END
+date.rst
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/!svn/ver/856/trunk/doc/filters/date.rst
+END
+nl2br.rst
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/!svn/ver/768/trunk/doc/filters/nl2br.rst
+END
+url_encode.rst
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/690/trunk/doc/filters/url_encode.rst
+END
+striptags.rst
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/!svn/ver/690/trunk/doc/filters/striptags.rst
+END

@@ -1,0 +1,17 @@
+.ui-front{
+	z-index: 3000
+
+}
+.cursos{
+	width:100%;
+	height:85px;
+}
+.curso{
+	resize:none;
+}
+.cur{
+    	background-color: white;
+}
+.cur:hover{
+    	background-color:#BFBFBF;
+}

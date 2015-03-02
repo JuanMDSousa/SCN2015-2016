@@ -1,0 +1,198 @@
+	<?php
+/*
+ * * * * * * * * * * LICENCIA * * * * * * * * * * * * * * * * * * * * *
+
+Copyright(C) 2012
+Instituto Universtiario de Tecnología Dr. Federico Rivero Palacio
+
+Este programa es Software Libre y usted puede redistribuirlo y/o modificarlo
+bajo los términos de la versión 3.0 de la Licencia Pública General (GPLv3)
+publicada por la Free Software Foundation (FSF), es distribuido sin ninguna
+garantía. Usted debe haber recibido una copia de la GPLv3 junto con este
+programa, sino, puede encontrarlo en la página web de la FSF, 
+específicamente en la dirección http://www.gnu.org/licenses/gpl-3.0.html
+
+ * * * * * * * * * * ARCHIVO * * * * * * * * * * * * * * * * * * * * *
+
+Nombre: InstitutoServicio.clase.php
+Diseñador: Johan Alamo (johan.alamo@gmail.com)
+Programador: Johan Alamo
+Fecha: Agosto de 2012
+Descripción: 
+
+	Esta clase ofrece el servicio de conexión a la base de datos, recibe 
+	los parámetros, construye las consultas SQL, hace las peticiones a 
+	la base de datos y retorna los objetos o datos correspondientes a la
+	acción.
+
+ * * * * * * * * Cambios/Mejoras/Correcciones/Revisiones * * * * * * * *
+Diseñador - Programador /   Fecha   / Descripción del cambio
+---                         ----      ---------
+
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+class InstitutoServicio 
+{
+
+		
+	/*Método genérico que permite hacer consultas complejas.
+	  Parámetros de entrada:
+	    $campos: campos a consultar de la base de datos (opcional)
+	    $where: condición where de la consulta (opcional)
+	    $orderby: clausula order by de la consulta SQL (opcional)
+	    $parametros: arreglo con los parámetros de la consulta (opcional)
+	  Valores de retorno:
+	    un arreglo de objetos tipo Instituto
+	    0: valor numérico 0 en caso de no existir coincidencias
+	    false: valor lógico false si ocurre algún error.
+	*/
+	public static function obtenerInstitutos($campos="*", $where=null, $orderBy=null, $parametros=array())
+	{
+		//instrucción para reconocer el objeto conexión
+		global $gbConectorBD;
+		//construcción de la consulta SQL
+		$sql = "select $campos from ts_instituto"
+			. (($where!=null)? " where $where":"")
+			. (($orderBy!=null)? " order by $orderBy":"")
+			. ";";
+			
+
+		//ejecutar el select, con los parámetros correspondientes
+		$result = $gbConectorBD->ejecutarDQLDirecto($sql,$parametros);
+
+		if (($result === FALSE) or ( $result === 0) )
+			//retorna false si ocurre un error, y 0 si la consulta no
+			//devuelve filas
+			return $result;
+		else {
+			for ($i = 0 ; $i < count($result); $i++){
+				//retorna un arreglo de Instituto en caso de existir data
+				$institutos[$i] = new Instituto();
+				$institutos[$i]->asignarNombre($result[$i]['nombre']);
+				$institutos[$i]->asignarNombreCorto($result[$i]['nom_corto']);
+				$institutos[$i]->asignarDireccion($result[$i]['direccion']);
+				$institutos[$i]->asignarCodigo($result[$i]['codigo']);
+			}
+			return $institutos;
+		}
+	}			
+
+	/*Permite buscar un instituto en específico.
+	  Parámetros de entrada:
+	    $codigo: código del instituto a buscar
+	  Valores de retorno:
+	    arreglo cuya única posición (la 0) es el objeto instituto
+	    0: Valor numérico 0 en caso de no existir coincidencia
+	    false: valor lógico false en caso de ocurrir algún error
+	*/
+	public static function obtenerInstitutoPorCodigo($codigo){
+		return InstitutoServicio::obtenerInstitutos("*", "codigo = $codigo",null);
+	}
+
+	/*Permite buscar un instituto en específico.
+	  Parámetros de entrada:
+	    $nombreCorto: nombre corto del instituto a buscar del instituto a buscar
+	  Valores de retorno:
+	    arreglo cuya única posición (la 0) es el objeto instituto
+	    0: Valor numérico 0 en caso de no existir coincidencia
+	    false: valor lógico false en caso de ocurrir algún error
+	*/
+	public static function obtenerInstitutoPorNombreCorto($nombreCorto){
+		return InstitutoServicio::obtenerInstitutos("*", "upper(nom_corto) = upper('$nombreCorto')",null);
+	}
+
+	/*Permite buscar varios institutos según un patrón de búsqueda, buscará
+	  cualquier coincidencia en mayúscula y/o minúscula en cualquier parte
+	  del nombre, nombre corto y dirección.
+	  Parámetros de entrada:
+	    $patron: patrón a buscar en los diferentes campos
+	  Valores de retorno:
+	    un arreglo de objetos tipo Instituto
+	    0: valor numérico 0 en caso de no existir coincidencias
+	    false: valor lógico false si ocurre algún error.
+	*/
+	public static function obtenerListaInstitutos($patron){
+		$patron = "'%" . $patron . "%'";
+		$where = "upper(nom_corto) like upper($patron)\n"
+			. "    or  upper(nombre) like upper($patron)\n"
+			. "    or  upper(direccion) like upper($patron)\n";
+		return InstitutoServicio::obtenerInstitutos("*", $where, "codigo asc");	
+	}
+	
+	/*Permite agregar un instituto a la base de datos, 
+	   Parámetros de entrada:
+	     $insitituto: objeto tipo Insitituto,
+	   Valor de retorno:
+	     true: en caso de éxito
+	     false: en caso de error 
+	*/
+	public static function agregarInstituto($instituto){
+		global $gbConectorBD;
+		/*consulta sql: para colocarle el código busca el mayor en la base de datos
+		     y le suma uno, si no lo encuentra le coloca el valor 11
+		*/
+		$sql = "insert into ts_instituto (codigo,nombre,nom_corto,direccion) 
+				values (  (select coalesce(max(codigo), 10) + 1 from ts_instituto),
+				    '" . $instituto->obtenerNombre() . "',
+					rtrim(ltrim(upper('" . $instituto->obtenerNombreCorto() . "'))),
+					'" . $instituto->obtenerDireccion() . "'
+					);";
+	//	die($sql);		     
+
+		//conexión, ejecución y desconexión de la base de datos				
+		$result = $gbConectorBD->ejecutarDMLDirecto($sql);		
+		
+		if (($result === FALSE) or ( $result === 0) )
+			return false;
+		else 
+			return true;
+	}
+
+	/*Permite modificar un instituto en la base de datos, 
+	   Parámetros de entrada:
+	     $insitituto: objeto tipo Insitituto, la modificación se le hará
+	        al instituto que tenga el mismo código de deste objeto
+	   Valor de retorno:
+	     true: en caso de éxito
+	     false: en caso de error 
+	*/	
+	public static function modificarInstituto($instituto){
+		global $gbConectorBD;
+		
+		$sql = "update ts_instituto
+				set nombre = '" . $instituto->obtenerNombre() . "',
+				nom_corto = ltrim(rtrim(upper('" . $instituto->obtenerNombreCorto() . "'))),
+				direccion = '" . $instituto->obtenerDireccion() . "'
+		         where codigo = " . $instituto->obtenerCodigo() . ";";
+
+		$result = $gbConectorBD->ejecutarDMLDirecto($sql);
+
+		if (($result === FALSE) or ( $result === 0) )
+			return false; 
+		else 
+			return true;
+	}
+	
+	/*Permite eliminar un instituto de la base de datos, 
+	   Parámetros de entrada:
+	     $codigo: código del instituto a eliminar
+	   Valor de retorno:
+	     true: en caso de éxito
+	     false: en caso de error 
+	*/	
+	public static function eliminarInstituto($codigo){
+		global $gbConectorBD;
+		
+		$sql = "delete from ts_instituto 
+		         where codigo = $codigo;";
+		
+		//conexión, ejecución y desconexión
+		$result = $gbConectorBD->ejecutarDMLDirecto($sql);
+
+		if (($result === FALSE) or ( $result === 0) )
+			return false; 
+		else 
+			return true;
+	}
+}

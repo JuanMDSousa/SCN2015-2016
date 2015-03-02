@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/846/trunk/test/Twig/Tests/Fixtures/filters
+END
+date_default_format_interval.test
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/827/trunk/test/Twig/Tests/Fixtures/filters/date_default_format_interval.test
+END
+merge.test
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/467/trunk/test/Twig/Tests/Fixtures/filters/merge.test
+END
+join.test
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/779/trunk/test/Twig/Tests/Fixtures/filters/join.test
+END
+slice.test
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/846/trunk/test/Twig/Tests/Fixtures/filters/slice.test
+END
+escape.test
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/685/trunk/test/Twig/Tests/Fixtures/filters/escape.test
+END
+number_format.test
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/775/trunk/test/Twig/Tests/Fixtures/filters/number_format.test
+END
+special_chars.test
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/634/trunk/test/Twig/Tests/Fixtures/filters/special_chars.test
+END
+number_format_default.test
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/775/trunk/test/Twig/Tests/Fixtures/filters/number_format_default.test
+END
+replace.test
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/732/trunk/test/Twig/Tests/Fixtures/filters/replace.test
+END
+reverse.test
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/802/trunk/test/Twig/Tests/Fixtures/filters/reverse.test
+END
+trim.test
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/844/trunk/test/Twig/Tests/Fixtures/filters/trim.test
+END
+date.test
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/845/trunk/test/Twig/Tests/Fixtures/filters/date.test
+END
+force_escape.test
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/658/trunk/test/Twig/Tests/Fixtures/filters/force_escape.test
+END
+nl2br.test
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/753/trunk/test/Twig/Tests/Fixtures/filters/nl2br.test
+END
+length.test
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/827/trunk/test/Twig/Tests/Fixtures/filters/length.test
+END
+date_interval.test
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/!svn/ver/827/trunk/test/Twig/Tests/Fixtures/filters/date_interval.test
+END
+default.test
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/702/trunk/test/Twig/Tests/Fixtures/filters/default.test
+END
+json_encode.test
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/798/trunk/test/Twig/Tests/Fixtures/filters/json_encode.test
+END
+convert_encoding.test
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/827/trunk/test/Twig/Tests/Fixtures/filters/convert_encoding.test
+END
+length_utf8.test
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/837/trunk/test/Twig/Tests/Fixtures/filters/length_utf8.test
+END
+sort.test
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/filters/sort.test
+END
+format.test
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/337/trunk/test/Twig/Tests/Fixtures/filters/format.test
+END
+escape_non_supported_charset.test
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/685/trunk/test/Twig/Tests/Fixtures/filters/escape_non_supported_charset.test
+END
+dynamic_filter.test
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/!svn/ver/757/trunk/test/Twig/Tests/Fixtures/filters/dynamic_filter.test
+END
+date_default_format.test
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/814/trunk/test/Twig/Tests/Fixtures/filters/date_default_format.test
+END

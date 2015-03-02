@@ -1,0 +1,101 @@
+alert("hector");
+
+function eliminar ()
+{
+	var txt;
+	var r = confirm("¿Desea eliminar la siguiente persona?");
+		if (r == true) {} 	
+			else {
+   		return false;
+				}
+}
+
+
+	function obtenerPersona(cedula){
+		var arr = Array("m_modulo", "persona",
+						"m_accion", "buscarPersonaCedula",
+						"m_vista", "obtenerPersona",
+						"cedula", cedula);		
+						
+		crearDialogo("obtenerPersona","PERSONA!","","PERSONITA");
+		$("<div class='row'><div class='col-md-12'><div id='personasL'></div></div></div>").appendTo(".modal-body");	
+		ajaxMVC(arr,succVerPer,errorPer);					
+	}
+	
+	function succVerPer(data){
+		if (data.estatus>0)
+		{
+			personas=data.persona;
+			console.log(data);
+			montarPersona(personas);
+		}
+		else{
+			mostrarMensaje(data.mensaje,2)
+		}
+	}
+	
+	
+	
+	function errorPer(){		
+		mostrarMensaje("esta persona no posee datos",2);
+		}
+	
+	function montarPersona(personas)
+	{
+		cadena="";
+		if (personas==null)
+		{
+			mostrarMensaje("esta persona no posee datos",2);
+		}
+		else
+		{
+			cadena+="<table class='table' id='tablaPersona'>";
+			cadena+="<tr class='titulo'>";
+			cadena+="<td>Cédula</td> " ;
+			cadena+="<td>Rif</td> " ;
+			cadena+="<td>Primer Nombre</td> " ;
+			cadena+="<td>Segundo Nombre</td> " ;
+			cadena+="<td>Primer Apellido</td> " ;
+			cadena+="<td>Segundo Apellido</td> " ;
+			cadena+="<td>Sexo</td> " ;
+			cadena+="<td>Fecha de Nacimiento</td> " ;
+			cadena+="<td>Tipo de Sangre</td> " ;
+			cadena+="<td>Telefono 1</td> " ;
+			cadena+="<td>Telefono 2</td> " ;
+			cadena+="<td>Correo Personal</td> " ;
+			cadena+="<td>Correo Institucional</td> " ;
+			cadena+="<td>Direccion</td> " ;
+			
+			cadena+="</tr>";
+			
+			for (i=0;i<personas.length;i++)
+			{
+				cadena+="<tr>";
+				cadena+="<td>"+personas[i]['cedula']+"</td>";
+				cadena+="<td>"+personas[i]['rif']+"</td>";
+				cadena+="<td>"+personas[i]['nombre1']+"</td>";
+				cadena+="<td>"+personas[i]['nombre2']+"</td>";
+				cadena+="<td>"+personas[i]['apellido1']+"</td>";
+				cadena+="<td>"+personas[i]['apellido2']+"</td>";
+				cadena+="<td>"+personas[i]['sexo']+"</td>";
+				cadena+="<td>"+personas[i]['fec_nacimiento']+"</td>";
+				cadena+="<td>"+personas[i]['tip_sangre']+"</td>";
+				cadena+="<td>"+personas[i]['telefono1']+"</td>";
+				cadena+="<td>"+personas[i]['telefono2']+"</td>";
+				cadena+="<td>"+personas[i]['cor_personal']+"</td>";
+				cadena+="<td>"+personas[i]['cor_institucional']+"</td>";
+				cadena+="<td>"+personas[i]['direccion']+"</td>";
+				cadena+="</tr";
+			}
+			
+			
+			
+			cadena+="</table>";			
+		}
+		$(cadena).appendTo('#personasL');
+		
+	}
+	
+	
+	
+

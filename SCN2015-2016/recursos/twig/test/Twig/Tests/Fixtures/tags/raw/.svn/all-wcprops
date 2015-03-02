@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/822/trunk/test/Twig/Tests/Fixtures/tags/raw
+END
+whitespace_control.test
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/822/trunk/test/Twig/Tests/Fixtures/tags/raw/whitespace_control.test
+END
+basic.test
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/587/trunk/test/Twig/Tests/Fixtures/tags/raw/basic.test
+END
